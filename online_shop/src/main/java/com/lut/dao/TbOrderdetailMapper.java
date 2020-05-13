@@ -3,7 +3,12 @@ package com.lut.dao;
 import com.lut.model.TbOrderdetailExample;
 import com.lut.model.TbOrderdetailKey;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Mapper
 
 public interface TbOrderdetailMapper {
     /**

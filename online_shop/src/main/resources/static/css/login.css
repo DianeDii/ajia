@@ -241,7 +241,7 @@ input[type="button"] {
     font-size: 16px;
     padding-top: 55px;
     padding-left: 52px;
-    background: url(/images/tan.png) no-repeat 12% 37%;
+    background: url(/static/images/tan.png) no-repeat 12% 37%;
     background-size: 9% auto;
 }
 

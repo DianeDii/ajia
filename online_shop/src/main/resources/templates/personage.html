@@ -3,38 +3,38 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>我的订单 - 阿甲学子商城</title>
-    <link href="../css/myOrder.css" rel="Stylesheet"/>
-    <link href="../css/header.css" rel="Stylesheet"/>
-    <link href="../css/footer.css" rel="Stylesheet"/>
-    <link href="../css/personage.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../css/icon/css/bootstrap.min.css">
-	<link href="../css/icon/css/cropper.min.css" rel="stylesheet">
-	<link href="../css/icon/css/sitelogo.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../css/icon/css/font-awesome.min.css">
+    <link href="../static/css/myOrder.css" rel="Stylesheet"/>
+    <link href="../static/css/header.css" rel="Stylesheet"/>
+    <link href="../static/css/footer.css" rel="Stylesheet"/>
+    <link href="../static/css/personage.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../static/css/icon/css/bootstrap.min.css">
+	<link href="../static/css/icon/css/cropper.min.css" rel="stylesheet">
+	<link href="../static/css/icon/css/sitelogo.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../static/css/icon/css/font-awesome.min.css">
 </head>
 <body>
 <!-- 页面顶部-->
 <header id="top">
     <div id="logo" class="lf">
-        <img class="animated jello" src="../images/header/logo.png" alt="logo"/>
+        <img class="animated jello" src="../static/images/header/logo.png" alt="logo"/>
     </div>
     <div id="top_input" class="lf">
         <input id="input" type="text" placeholder="请输入您要搜索的内容"/>
         <div class="seek" tabindex="-1">
-            <div class="actived" ><span>分类搜索</span> <img src="../images/header/header_normal.png" alt=""/></div>
+            <div class="actived" ><span>分类搜索</span> <img src="../static/images/header/header_normal.png" alt=""/></div>
             <div class="seek_content" >
                 <div id="shcy" >生活餐饮</div>
                 <div id="xxyp" >学习用品</div>
                 <div id="srdz" >私人订制</div>
             </div>
         </div>
-        <a href="" class="rt"><img id="search" src="../images/header/search.png" alt="搜索"/></a>
+        <a href="" class="rt"><img id="search" src="../static/images/header/search.png" alt="搜索"/></a>
     </div>
     <div class="rt">
         <ul class="lf">
-            <li><a href="myCollect.html" title="我的收藏"><img class="care" src="../images/header/care.png" alt=""/></a><b>|</b></li>
-            <li><a href="myOrder.html" title="我的订单"><img class="order" src="../images/header/order.png" alt=""/></a><b>|</b></li>
-            <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../images/header/shop_car.png" alt=""/></a><b>|</b></li>
+            <li><a href="myCollect.html" title="我的收藏"><img class="care" src="../static/images/header/care.png" alt=""/></a><b>|</b></li>
+            <li><a href="myOrder.html" title="我的订单"><img class="order" src="../static/images/header/order.png" alt=""/></a><b>|</b></li>
+            <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../static/images/header/shop_car.png" alt=""/></a><b>|</b></li>
             <li><a href="lookforward.html">帮助</a><b>|</b></li>
             <li><a href="login.html">登录</a></li>
         </ul>
@@ -62,7 +62,7 @@
         <div class="line"></div>
         <dl class="my_order">
             <dt onClick="changeImage()">我的订单
-                <img src="../images/myOrder/myOrder2.png">
+                <img src="../static/images/myOrder/myOrder2.png">
             </dt>
             <dd class="first_dd"><a href="myOrder.html">全部订单</a></dd>
             <dd>
@@ -88,15 +88,15 @@
         </dl>
 
         <dl class="footMark">
-            <dt onClick="changeImage()">我的优惠卷<img src="../images/myOrder/myOrder1.png"></dt>
+            <dt onClick="changeImage()">我的优惠卷<img src="../static/images/myOrder/myOrder1.png"></dt>
         </dl>
 
         <dl class="address">
-                <dt>收货地址<img src="../images/myOrder/myOrder1.png"></dt>
+                <dt>收货地址<img src="../static/images/myOrder/myOrder1.png"></dt>
 				<dd><a href="addressAdmin.html">地址管理</a></dd>
             </dl>
             <dl class="count_managment">
-                <dt onClick="changeImage()">帐号管理<img src="../images/myOrder/myOrder1.png"></dt>
+                <dt onClick="changeImage()">帐号管理<img src="../static/images/myOrder/myOrder1.png"></dt>
                 <dd class="first_dd"><a href="personage.html">我的信息</a></dd>
                 <dd><a href="personal_password.html">安全管理</a></dd>
             </dl>
@@ -114,7 +114,7 @@
             <!--头像-->
             <div class="rs_content_headPortrait">
 	                <span class="same">我的头像：</span>
-	                <img src="../images/personage/touxiang.png" alt="" id="icon" width="50px" height="50px"/>
+	                <img src="../static/images/personage/touxiang.png" alt="" id="icon" width="50px" height="50px"/>
 	                <input type="hidden" name="iconPic" value="" id="iconPic">
 	                <span class="change_headPortrait same_click" data-toggle="modal" data-target="#avatar-modal" >更改头像</span>
 	            </div>
@@ -129,10 +129,10 @@
             <div class="rs_content_sex">
                 <span class="same">性别：</span>
                 <span class="man selected">
-                    <img src="../images/personage/select.png" alt=""/>男
+                    <img src="../static/images/personage/select.png" alt=""/>男
                 </span>
                 <span class="women">
-                    <img src="../images/personage/un_select.png" alt=""/>女
+                    <img src="../static/images/personage/un_select.png" alt=""/>女
                 </span>
             </div>
             <!--绑定电话-->
@@ -224,22 +224,22 @@
 <!-- 品质保障，私人定制等-->
 <div id="foot_box">
     <div class="icon1 lf">
-        <img src="../images/footer/icon1.png" alt=""/>
+        <img src="../static/images/footer/icon1.png" alt=""/>
 
         <h3>品质保障</h3>
     </div>
     <div class="icon2 lf">
-        <img src="../images/footer/icon2.png" alt=""/>
+        <img src="../static/images/footer/icon2.png" alt=""/>
 
         <h3>私人定制</h3>
     </div>
     <div class="icon3 lf">
-        <img src="../images/footer/icon3.png" alt=""/>
+        <img src="../static/images/footer/icon3.png" alt=""/>
 
         <h3>学员特供</h3>
     </div>
     <div class="icon4 lf">
-        <img src="../images/footer/icon4.png" alt=""/>
+        <img src="../static/images/footer/icon4.png" alt=""/>
 
         <h3>专属特权</h3>
     </div>
@@ -248,8 +248,8 @@
 <div class="foot_bj">
     <div id="foot">
         <div class="lf">
-            <p class="footer1"><img src="../images/footer/logo.png" alt="" class=" footLogo"/></p>
-            <p class="footer2"><img src="../images/footer/footerFont.png" alt=""/></p>
+            <p class="footer1"><img src="../static/images/footer/logo.png" alt="" class=" footLogo"/></p>
+            <p class="footer2"><img src="../static/images/footer/footerFont.png" alt=""/></p>
             
         </div>
         <div class="foot_left lf" >
@@ -269,18 +269,18 @@
                 <li><a href="#">关于阿甲</a></li>
                 <li><a href="#">联系我们</a></li>
                 <li>
-                    <img src="../images/footer/wechat.png" alt=""/>
-                    <img src="../images/footer/sinablog.png" alt=""/>
+                    <img src="../static/images/footer/wechat.png" alt=""/>
+                    <img src="../static/images/footer/sinablog.png" alt=""/>
                 </li>
             </ul>
         </div>
         <div class="service">
             <p>阿甲商城客户端</p>
-            <img src="../images/footer/ios.png" class="lf">
-            <img src="../images/footer/android.png" alt="" class="lf"/>
+            <img src="../static/images/footer/ios.png" class="lf">
+            <img src="../static/images/footer/android.png" alt="" class="lf"/>
         </div>
         <div class="download">
-            <img src="../images/footer/erweima.png">
+            <img src="../static/images/footer/erweima.png">
         </div>
 		<!-- 页面底部-备案号 #footer -->
             <div class="record">
@@ -289,15 +289,15 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script src="../js/index.js"></script>
-<script src="../js/jquery.page.js"></script>
-<script type="text/javascript" src="../js/order.js"></script>
-<script type="text/javascript" src="../js/personal.js"></script>
-<script src="../js/icon/bootstrap.min.js"></script>
-<script src="../js/icon/cropper.js"></script>
-<script src="../js/icon/sitelogo.js"></script>
-<script src="../js/icon/html2canvas.min.js" type="text/javascript" charset="utf-8"></script> 
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script src="../static/js/index.js"></script>
+<script src="../static/js/jquery.page.js"></script>
+<script type="text/javascript" src="../static/js/order.js"></script>
+<script type="text/javascript" src="../static/js/personal.js"></script>
+<script src="../static/js/icon/bootstrap.min.js"></script>
+<script src="../static/js/icon/cropper.js"></script>
+<script src="../static/js/icon/sitelogo.js"></script>
+<script src="../static/js/icon/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript"> 
 //做个下简易的验证  大小 格式  
     $('#avatarInput').on('change', function(e) {

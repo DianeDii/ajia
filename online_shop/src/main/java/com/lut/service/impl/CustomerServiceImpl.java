@@ -7,17 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lut.service.CustomerService;
 
+import java.util.List;
+
+@Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     TbCustomerMapper tbCustomerMapper;
     @Override
-    public TbCustomer findByName(String customername) {
-        return tbCustomerMapper.selectByPrimaryKey(customername);
+    public String login(String customername,String password) {
+//这里返回为空到controller处理
+       return tbCustomerMapper.login(customername,password);
     }
 
     @Override
-    public TbCustomer save(TbCustomer tbCustomer) {
-        return tbCustomer;
+    public int save(TbCustomer tbCustomer) {
+        return tbCustomerMapper.insert(tbCustomer);
     }
 
     @Override
