@@ -31,8 +31,8 @@
             <li><a href="myOrder.html" title="我的订单"><img class="order" src="../static/images/header/order.png" alt=""/></a><b>|</b></li>
             <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../static/images/header/shop_car.png" alt=""/></a><b>|</b></li>
             <li><a href="lookforward.html">帮助</a><b>|</b></li>
-            <li style="display: none" id="islogin">欢迎：<p th:text='${session.name}'></p></li>
-            <span id=value></span>
+            <li style="display: none" id="ishidden"><span id="islogin" th:text='${session.name}'>你好：</span></li>
+<!--            <span id=value></span>-->
 <!--            <p th:text='${session.name}'></p>-->
 
 
@@ -317,25 +317,35 @@
     })
 </script>
 <script>
-    var loginSession ="<%=session.getAttribute('name')%>";
+
     // document.getElementById("value").innerHTML = loginSession;
-    // if(session 不为空){获取主页登录节点，并把它修改为 "欢迎+用户名"}else{登录按钮加链接跳转/login}
-//需要解决的点：1.js怎么判断有没有session ，:补充：session作用域
+    //需要解决的点：1.js怎么判断有没有session ，:补充：session作用域
+    // if(session 不为空){获取主页登录节点，并把它修改为 "欢迎+用户名"}else{登录按钮}
 function load_data() {
     // var loginSession = localStorage.getItem("name");
-    var loginSession ="<%=session.getAttribute('name')%>";
+    var test = "aaa";
+    // var  ='<%=session.getAttribute(name)%>';
     var islogin = document.getElementById('islogin');
-    if(loginSession == null || loginSession == "")
+    var ishidden = document.getElementById('ishidden');
+    var  loginSession = islogin.innerText;
+    if(loginSession != null && loginSession != "" && loginSession != undefined)
     {
-        islogin.innerHTML ='<a href="/loginPage">登录</a>';
-        window.location.href="/login";
-    }
-    else
+        ishidden.style.display = 'block';
+    }else
     {
-        islogin.style.display = 'block';
+        ishidden.style.display = 'block';
+        islogin.innerHTML = '<a href="/loginPage">登录</a>';
     }
 }
 
+// function islogin() {
+//     {
+//         var text = document.getElementById('loginbutton').innerText;
+//         if (text ==null || text== ''){
+//             document.getElementById('loginbutton').innerHTML = '<a href="/loginPage">登录</a>';
+//         }
+//     }
+// }
 
 //以下为失败实验
 // var loginSession ="<p th:text=\"${session.name}\"></p>";
