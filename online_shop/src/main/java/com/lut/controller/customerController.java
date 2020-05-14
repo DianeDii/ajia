@@ -29,6 +29,7 @@ public class customerController {
         String username =  request.getParameter("name");
         String password = request.getParameter("pwd");
         String name = customerService.login(username,password);
+        session.setAttribute("name",name);
         if(name ==null){
             return "redirect:/login";
         }else {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8">
     <title>阿甲学子商城首页</title>
@@ -7,7 +7,7 @@
     <link href="../static/css/animate.css" rel="Stylesheet"/>
     <link rel="stylesheet" href="../static/css/slide.css"/>
 </head>
-<body>
+<body onload="load_data()">
 <!-- 页面顶部-->
 <header id="top">
     <div id="logo" class="lf">
@@ -31,7 +31,11 @@
             <li><a href="myOrder.html" title="我的订单"><img class="order" src="../static/images/header/order.png" alt=""/></a><b>|</b></li>
             <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../static/images/header/shop_car.png" alt=""/></a><b>|</b></li>
             <li><a href="lookforward.html">帮助</a><b>|</b></li>
-            <li><a >登录</a></li>
+            <li style="display: none" id="islogin">欢迎：<p th:text='${session.name}'></p></li>
+            <span id=value></span>
+<!--            <p th:text='${session.name}'></p>-->
+
+
         </ul>
     </div>
 </header>
@@ -219,6 +223,7 @@
         </div>
     </div>
 </div>
+
 <!-- 品质保障，私人定制等-->
 <div id="foot_box">
     <div class="icon1 lf">
@@ -310,6 +315,38 @@
     $("#search").click(function(){
     	window.location.href="search.html";
     })
+</script>
+<script>
+    var loginSession ="<%=session.getAttribute('name')%>";
+    // document.getElementById("value").innerHTML = loginSession;
+    // if(session 不为空){获取主页登录节点，并把它修改为 "欢迎+用户名"}else{登录按钮加链接跳转/login}
+//需要解决的点：1.js怎么判断有没有session ，:补充：session作用域
+function load_data() {
+    // var loginSession = localStorage.getItem("name");
+    var loginSession ="<%=session.getAttribute('name')%>";
+    var islogin = document.getElementById('islogin');
+    if(loginSession == null || loginSession == "")
+    {
+        islogin.innerHTML ='<a href="/loginPage">登录</a>';
+        window.location.href="/login";
+    }
+    else
+    {
+        islogin.style.display = 'block';
+    }
+}
+
+
+//以下为失败实验
+// var loginSession ="<p th:text=\"${session.name}\"></p>";
+// if(loginSession != null){
+//     window.onload = function () {
+//         var islogin = document.getElementById('islogin');
+//         islogin.innerHTML = "<p th:text='${session.name}'></p>";
+//     }
+// }else {
+//     window.location.href= "/login";
+// }
 </script>
 </body>
 </html>
