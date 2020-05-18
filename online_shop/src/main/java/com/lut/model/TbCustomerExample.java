@@ -195,142 +195,142 @@ public class TbCustomerExample {
         }
 
         public Criteria andCustomernameIsNull() {
-            addCriterion("customerName  is null");
+            addCriterion("customerName is null");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameIsNotNull() {
-            addCriterion("customerName  is not null");
+            addCriterion("customerName is not null");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameEqualTo(String value) {
-            addCriterion("customerName  =", value, "customername ");
+            addCriterion("customerName =", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameNotEqualTo(String value) {
-            addCriterion("customerName  <>", value, "customername ");
+            addCriterion("customerName <>", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameGreaterThan(String value) {
-            addCriterion("customerName  >", value, "customername ");
+            addCriterion("customerName >", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameGreaterThanOrEqualTo(String value) {
-            addCriterion("customerName  >=", value, "customername ");
+            addCriterion("customerName >=", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameLessThan(String value) {
-            addCriterion("customerName  <", value, "customername ");
+            addCriterion("customerName <", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameLessThanOrEqualTo(String value) {
-            addCriterion("customerName  <=", value, "customername ");
+            addCriterion("customerName <=", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameLike(String value) {
-            addCriterion("customerName  like", value, "customername ");
+            addCriterion("customerName like", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameNotLike(String value) {
-            addCriterion("customerName  not like", value, "customername ");
+            addCriterion("customerName not like", value, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameIn(List<String> values) {
-            addCriterion("customerName  in", values, "customername ");
+            addCriterion("customerName in", values, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameNotIn(List<String> values) {
-            addCriterion("customerName  not in", values, "customername ");
+            addCriterion("customerName not in", values, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameBetween(String value1, String value2) {
-            addCriterion("customerName  between", value1, value2, "customername ");
+            addCriterion("customerName between", value1, value2, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomernameNotBetween(String value1, String value2) {
-            addCriterion("customerName  not between", value1, value2, "customername ");
+            addCriterion("customerName not between", value1, value2, "customername");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassIsNull() {
-            addCriterion("customerPass  is null");
+            addCriterion("customerPass is null");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassIsNotNull() {
-            addCriterion("customerPass  is not null");
+            addCriterion("customerPass is not null");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassEqualTo(String value) {
-            addCriterion("customerPass  =", value, "customerpass ");
+            addCriterion("customerPass =", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassNotEqualTo(String value) {
-            addCriterion("customerPass  <>", value, "customerpass ");
+            addCriterion("customerPass <>", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassGreaterThan(String value) {
-            addCriterion("customerPass  >", value, "customerpass ");
+            addCriterion("customerPass >", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassGreaterThanOrEqualTo(String value) {
-            addCriterion("customerPass  >=", value, "customerpass ");
+            addCriterion("customerPass >=", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassLessThan(String value) {
-            addCriterion("customerPass  <", value, "customerpass ");
+            addCriterion("customerPass <", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassLessThanOrEqualTo(String value) {
-            addCriterion("customerPass  <=", value, "customerpass ");
+            addCriterion("customerPass <=", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassLike(String value) {
-            addCriterion("customerPass  like", value, "customerpass ");
+            addCriterion("customerPass like", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassNotLike(String value) {
-            addCriterion("customerPass  not like", value, "customerpass ");
+            addCriterion("customerPass not like", value, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassIn(List<String> values) {
-            addCriterion("customerPass  in", values, "customerpass ");
+            addCriterion("customerPass in", values, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassNotIn(List<String> values) {
-            addCriterion("customerPass  not in", values, "customerpass ");
+            addCriterion("customerPass not in", values, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassBetween(String value1, String value2) {
-            addCriterion("customerPass  between", value1, value2, "customerpass ");
+            addCriterion("customerPass between", value1, value2, "customerpass");
             return (Criteria) this;
         }
 
         public Criteria andCustomerpassNotBetween(String value1, String value2) {
-            addCriterion("customerPass  not between", value1, value2, "customerpass ");
+            addCriterion("customerPass not between", value1, value2, "customerpass");
             return (Criteria) this;
         }
 

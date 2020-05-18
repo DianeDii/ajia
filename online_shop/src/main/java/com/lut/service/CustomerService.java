@@ -12,10 +12,12 @@ import java.util.List;
 @Service
 public interface CustomerService {
 
-    String login(String customername,String password);
+    TbCustomer login(String customername);
 
-    int save(TbCustomer tbCustomer);
+    void save(TbCustomer tbCustomer);
 
     TbReceive addAddress(TbReceive tbReceive);
+
+    void changeTel(TbCustomer user,String tel);
 
 }

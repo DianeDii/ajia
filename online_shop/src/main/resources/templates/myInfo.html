@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的信息</title>
+    <style type="text/css">
+
+        table
+
+        {
+
+            border-collapse: collapse;
+
+            margin: 0 auto;
+
+            text-align: center;
+
+        }
+
+        table td, table th
+
+        {
+
+            border: 1px solid #cad9ea;
+
+            color: #666;
+
+            height: 30px;
+
+        }
+
+        table thead th
+
+        {
+
+            background-color: #CCE8EB;
+
+            width: 100px;
+
+        }
+
+        table tr:nth-child(odd)
+
+        {
+
+            background: #fff;
+
+        }
+
+        table tr:nth-child(even)
+
+        {
+
+            background: #F5FAFA;
+
+        }
+
+    </style>
+
+</head>
+<body>
+<table border="1px soild" th:each="info : ${myInfo}">
+    <tr>
+        <td>用户名:</td>
+        <td th:text="${info.customername}"></td>
+    </tr>
+    <tr>
+        <td>密码:</td>
+        <td id="pwd" style="display: none" th:text="${info.customerpass}"></td>
+        <td id="pwdhidden" style="display: block"><span onclick="show()">点击显示</span></td>
+    </tr>
+    <tr>
+        <td>电话:</td>
+        <td th:text="${info.customertel}"></td>
+        <td><a href="/changeTelPage" onclick="showInput()">
+            修改电话</a></td>
+
+    </tr>
+
+</table>
+
+
+
+
+</body>
+<script src="../static/js/jquery-3.1.1.min.js"></script>
+<script>
+function  show() {
+    var showPwd = document.getElementById("pwd");
+    var hiddenPwd = document.getElementById("pwdhidden");
+    showPwd.style.display = 'block';
+    hiddenPwd.style.display = 'none';
+}
+
+</script>
+</html>

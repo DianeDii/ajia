@@ -27,11 +27,14 @@
     </div>
     <div class="rt">
         <ul class="lf">
-            <li><a href="myCollect.html" title="我的收藏"><img class="care" src="../static/images/header/care.png" alt=""/></a><b>|</b></li>
-            <li><a href="myOrder.html" title="我的订单"><img class="order" src="../static/images/header/order.png" alt=""/></a><b>|</b></li>
-            <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../static/images/header/shop_car.png" alt=""/></a><b>|</b></li>
-            <li><a href="lookforward.html">帮助</a><b>|</b></li>
-            <li style="display: none" id="ishidden"><span id="islogin" th:text='${session.name}'>你好：</span></li>
+<!--            <li><a href="myCollect.html" title="我的收藏"><img class="care" src="../static/images/header/care.png" alt=""/></a><b>|</b></li>-->
+<!--            <li><a href="myOrder.html" title="我的订单"><img class="order" src="../static/images/header/order.png" alt=""/></a><b>|</b></li>-->
+<!--            <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../static/images/header/shop_car.png" alt=""/></a><b>|</b></li>-->
+<!--            <li><a href="lookforward.html">帮助</a><b>|</b></li>-->
+            <li><span id="islogin" onclick="show()" th:text='${session.name}'></span></li>
+            <li style="display: none" class="ishidden"><a href="/myInfo">我的信息</a></li>
+            <li style="display: none" class="ishidden">收货地址</li>
+            <li style="display: none" class="ishidden"><a href="/login">登出</a></li>
 <!--            <span id=value></span>-->
 <!--            <p th:text='${session.name}'></p>-->
 
@@ -326,37 +329,27 @@ function load_data() {
     var test = "aaa";
     // var  ='<%=session.getAttribute(name)%>';
     var islogin = document.getElementById('islogin');
-    var ishidden = document.getElementById('ishidden');
+    var ishidden = document.getElementsByClassName('ishidden');
     var  loginSession = islogin.innerText;
     if(loginSession != null && loginSession != "" && loginSession != undefined)
     {
-        ishidden.style.display = 'block';
+        for (var i = 0; i<ishidden.length;i++) {
+            ishidden[i].style.display="block";
+        }
     }else
     {
-        ishidden.style.display = 'block';
-        islogin.innerHTML = '<a href="/loginPage">登录</a>';
+        islogin.innerHTML = '<a href="/login">登录</a>';
     }
 }
+var isloginSelect = "<select οnchange='clickChange()'><option>我的信息</option><option>收货地址</option><option>登出</option></select>";
+function show() {
+    var islogin = document.getElementById('islogin');
+    islogin.innerHTML = islogin.innerText+isloginSelect;
+}
 
-// function islogin() {
-//     {
-//         var text = document.getElementById('loginbutton').innerText;
-//         if (text ==null || text== ''){
-//             document.getElementById('loginbutton').innerHTML = '<a href="/loginPage">登录</a>';
-//         }
-//     }
-// }
-
-//以下为失败实验
-// var loginSession ="<p th:text=\"${session.name}\"></p>";
-// if(loginSession != null){
-//     window.onload = function () {
-//         var islogin = document.getElementById('islogin');
-//         islogin.innerHTML = "<p th:text='${session.name}'></p>";
-//     }
-// }else {
-//     window.location.href= "/login";
-// }
 </script>
 </body>
 </html>
+<!--        for (var i = 0; i<ishidden.length;i++) {
+            divset[i].style.display="block";
+        }-->

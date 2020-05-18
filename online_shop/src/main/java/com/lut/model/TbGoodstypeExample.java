@@ -195,132 +195,132 @@ public class TbGoodstypeExample {
         }
 
         public Criteria andGoodstypeidIsNull() {
-            addCriterion("goodsTypeID  is null");
+            addCriterion("goodsTypeID is null");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidIsNotNull() {
-            addCriterion("goodsTypeID  is not null");
+            addCriterion("goodsTypeID is not null");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidEqualTo(Integer value) {
-            addCriterion("goodsTypeID  =", value, "goodstypeid ");
+            addCriterion("goodsTypeID =", value, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidNotEqualTo(Integer value) {
-            addCriterion("goodsTypeID  <>", value, "goodstypeid ");
+            addCriterion("goodsTypeID <>", value, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidGreaterThan(Integer value) {
-            addCriterion("goodsTypeID  >", value, "goodstypeid ");
+            addCriterion("goodsTypeID >", value, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("goodsTypeID  >=", value, "goodstypeid ");
+            addCriterion("goodsTypeID >=", value, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidLessThan(Integer value) {
-            addCriterion("goodsTypeID  <", value, "goodstypeid ");
+            addCriterion("goodsTypeID <", value, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidLessThanOrEqualTo(Integer value) {
-            addCriterion("goodsTypeID  <=", value, "goodstypeid ");
+            addCriterion("goodsTypeID <=", value, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidIn(List<Integer> values) {
-            addCriterion("goodsTypeID  in", values, "goodstypeid ");
+            addCriterion("goodsTypeID in", values, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidNotIn(List<Integer> values) {
-            addCriterion("goodsTypeID  not in", values, "goodstypeid ");
+            addCriterion("goodsTypeID not in", values, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidBetween(Integer value1, Integer value2) {
-            addCriterion("goodsTypeID  between", value1, value2, "goodstypeid ");
+            addCriterion("goodsTypeID between", value1, value2, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypeidNotBetween(Integer value1, Integer value2) {
-            addCriterion("goodsTypeID  not between", value1, value2, "goodstypeid ");
+            addCriterion("goodsTypeID not between", value1, value2, "goodstypeid");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameIsNull() {
-            addCriterion("goodsTypeName  is null");
+            addCriterion("goodsTypeName is null");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameIsNotNull() {
-            addCriterion("goodsTypeName  is not null");
+            addCriterion("goodsTypeName is not null");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameEqualTo(String value) {
-            addCriterion("goodsTypeName  =", value, "goodstypename ");
+            addCriterion("goodsTypeName =", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameNotEqualTo(String value) {
-            addCriterion("goodsTypeName  <>", value, "goodstypename ");
+            addCriterion("goodsTypeName <>", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameGreaterThan(String value) {
-            addCriterion("goodsTypeName  >", value, "goodstypename ");
+            addCriterion("goodsTypeName >", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameGreaterThanOrEqualTo(String value) {
-            addCriterion("goodsTypeName  >=", value, "goodstypename ");
+            addCriterion("goodsTypeName >=", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameLessThan(String value) {
-            addCriterion("goodsTypeName  <", value, "goodstypename ");
+            addCriterion("goodsTypeName <", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameLessThanOrEqualTo(String value) {
-            addCriterion("goodsTypeName  <=", value, "goodstypename ");
+            addCriterion("goodsTypeName <=", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameLike(String value) {
-            addCriterion("goodsTypeName  like", value, "goodstypename ");
+            addCriterion("goodsTypeName like", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameNotLike(String value) {
-            addCriterion("goodsTypeName  not like", value, "goodstypename ");
+            addCriterion("goodsTypeName not like", value, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameIn(List<String> values) {
-            addCriterion("goodsTypeName  in", values, "goodstypename ");
+            addCriterion("goodsTypeName in", values, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameNotIn(List<String> values) {
-            addCriterion("goodsTypeName  not in", values, "goodstypename ");
+            addCriterion("goodsTypeName not in", values, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameBetween(String value1, String value2) {
-            addCriterion("goodsTypeName  between", value1, value2, "goodstypename ");
+            addCriterion("goodsTypeName between", value1, value2, "goodstypename");
             return (Criteria) this;
         }
 
         public Criteria andGoodstypenameNotBetween(String value1, String value2) {
-            addCriterion("goodsTypeName  not between", value1, value2, "goodstypename ");
+            addCriterion("goodsTypeName not between", value1, value2, "goodstypename");
             return (Criteria) this;
         }
     }

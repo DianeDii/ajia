@@ -14,18 +14,25 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     TbCustomerMapper tbCustomerMapper;
     @Override
-    public String login(String customername,String password) {
+    public TbCustomer login(String customername) {
 //这里返回为空到controller处理
-       return tbCustomerMapper.login(customername,password);
+       return tbCustomerMapper.selectByPrimaryKey(customername);
     }
 
     @Override
-    public int save(TbCustomer tbCustomer) {
-        return tbCustomerMapper.insert(tbCustomer);
+    public void save(TbCustomer tbCustomer) {
+        tbCustomerMapper.insert(tbCustomer);
     }
 
     @Override
     public TbReceive addAddress(TbReceive tbReceive) {
         return null;
+    }
+
+    @Override
+    public void changeTel(TbCustomer user,String tel) {
+
+        user.setCustomertel(tel);
+        tbCustomerMapper.updateByPrimaryKey(user);
     }
 }
