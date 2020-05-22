@@ -1,12 +1,14 @@
 package com.lut.service;
 
 import com.lut.model.TbGoods;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface GoodsService {
-    //用户方法
-    TbGoods showGoods(String goodsID);
+    //主页显示所有商品
+    List<TbGoods> showGoods();
 
-    //后台管理员方法
+    //字段搜索显示相应商品
+    List<TbGoods> showGoodsByField(String goodName);
 }
