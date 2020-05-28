@@ -14,4 +14,13 @@ public interface GoodsService {
 
     //凭主键获取商品
     TbGoods getGoodsDetail(Integer id);
+
+    //增加商品
+    void addGoods(TbGoods tbGoods);
+
+    //删除商品
+    void delGoods(Integer goodsId);
+
+    //更新商品
+    int updateGoods(TbGoods tbGoods);
 }

@@ -54,11 +54,17 @@ public class customerController {
         String password = request.getParameter("pwd");
         String name = customerService.login(username).getCustomername();
         String pwd = customerService.login(username).getCustomerpass();
+        Integer power = customerService.login(username).getPower();
         ModelAndView modelAndView = new ModelAndView();
 
         if(password.equals(pwd) && username.equals(name)){
             session.setAttribute("name",username);
-            modelAndView.setViewName("index");
+            if (power == 1 ){
+                modelAndView.setViewName("index");
+            }else if (power ==2){
+                modelAndView.setViewName("manager");
+            }
+
         }else {
             modelAndView.setViewName("login");
         }

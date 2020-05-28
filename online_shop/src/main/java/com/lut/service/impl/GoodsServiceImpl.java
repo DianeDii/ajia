@@ -25,5 +25,20 @@ public class GoodsServiceImpl implements GoodsService {
     public TbGoods getGoodsDetail(Integer id) {
         return tbGoodsMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public void addGoods(TbGoods tbGoods) {
+        tbGoodsMapper.insert(tbGoods);
+    }
+
+    @Override
+    public void delGoods(Integer goodsId) {
+        tbGoodsMapper.deleteByPrimaryKey(goodsId);
+    }
+
+    @Override
+    public int updateGoods(TbGoods tbGoods) {
+        return tbGoodsMapper.updateByPrimaryKey(tbGoods);
+    }
 }
 
