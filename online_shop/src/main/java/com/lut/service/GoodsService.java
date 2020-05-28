@@ -11,4 +11,7 @@ public interface GoodsService {
 
     //字段搜索显示相应商品
     List<TbGoods> showGoodsByField(String goodName);
+
+    //凭主键获取商品
+    TbGoods getGoodsDetail(Integer id);
 }

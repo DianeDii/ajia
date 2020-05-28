@@ -13,8 +13,9 @@
     <div id="logo" class="lf">
         <img src="../static/images/header/logo.png" alt="logo"/>
     </div>
+<form action="/goods/search" method="post">
     <div id="top_input" class="lf">
-        <input id="input" type="text" placeholder="请输入您要搜索的内容"/>
+        <input id="input" type="text" placeholder="请输入您要搜索的内容" name="input"/>
         <div class="seek" tabindex="-1">
             <div class="actived" ><span>分类搜索</span> <img src="../static/images/header/header_normal.png" alt=""/></div>
             <div class="seek_content" >
@@ -23,8 +24,9 @@
                 <div id="srdz" >私人订制</div>
             </div>
         </div>
-        <a href="javascript:void(0);" class="rt"><img id="search" src="../static/images/header/search.png" alt="搜索"/></a>
+        <a type="submit" class="rt"><img id="search" src="../static/images/header/search.png" alt="搜索"/></a>
     </div>
+</form>
     <div class="rt">
         <ul class="lf">
 <!--            <li><a href="myCollect.html" title="我的收藏"><img class="care" src="../static/images/header/care.png" alt=""/></a><b>|</b></li>-->
@@ -32,9 +34,12 @@
 <!--            <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../static/images/header/shop_car.png" alt=""/></a><b>|</b></li>-->
 <!--            <li><a href="lookforward.html">帮助</a><b>|</b></li>-->
             <li><span id="islogin" onclick="show()" th:text='${session.name}'></span></li>
-            <li style="display: none" class="ishidden"><a href="/myInfo">我的信息</a></li>
-            <li style="display: none" class="ishidden">收货地址</li>
-            <li style="display: none" class="ishidden"><a href="/login">登出</a></li>
+            <li style="display: none" class="ishidden"><a href="/user/myInfo">我的信息</a></li>
+            <li style="display: none" class="ishidden"><a href="/user/address">收货地址</a></li>
+<!--            订单未完成-->
+            <li style="display: none" class="ishidden"><a href="/user/order">我的订单</a></li>
+            <br>
+            <li style="display: none" class="ishidden"><a href="/user/login">登出</a></li>
 <!--            <span id=value></span>-->
 <!--            <p th:text='${session.name}'></p>-->
 
@@ -42,190 +47,11 @@
         </ul>
     </div>
 </header>
-<!-- nav主导航-->
-<nav id="nav">
-    <ul>
-        <li><a href="../static/index.html" class="acti">首页</a></li>
-        <li><a href="item_food.html">生活餐饮</a></li>
-        <li><a href="itemCat.html">学习用品</a></li>
-        <li><a href="lookforward.html">私人定制</a></li>
-    </ul>
-</nav>
-<!-- banner部分-->
-<div class="ck-slide">
-    <ul class="ck-slide-wrapper">
-        <li>
-            <a href="product_details.html"><img src="../static/images/index/index_banner1.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="product_details.html"><img src="../static/images/index/index_banner2.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="product_details.html"><img src="../static/images/index/index_banner3.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="product_details.html"><img src="../static/images/index/index_banner4.png" alt=""></a>
-        </li>
-        <li style="display:none">
-            <a href="product_details.html"><img src="../static/images/index/index_banner5.png" alt=""></a>
-        </li>
-    </ul>
-    <a href="javascript:;" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
-    <div class="ck-slidebox">
-        <div class="slideWrap">
-            <ul class="dot-wrap">
-                <li class="current"><em>1</em></li>
-                <li><em>2</em></li>
-                <li><em>3</em></li>
-                <li><em>4</em></li>
-                <li><em>5</em></li>
-            </ul>
-        </div>
-    </div>
+<div id="content_box">
+
 </div>
-<!-- 特推部分-->
-<div id="product">
-    <div class="product_1 lf">
-        <div class="aside lf">
-            <img id="aside_image" src="../static/images/index/index_Sbanner_img1.png" alt=""/>
-        </div>
-        <div class="text rt">
-            <p class="ys1">联想小新<b class="ys2">Air3</b></p>
-            <p class="ys3">设计师独享高端配置</p>
-        </div>
-    </div>
-    <div class="product_2 lf">
 
-        <div class="aside lf">
-            <img id="aside_image2" src="../static/images/index/index_Sbanner_img2.png" alt=""/>
-        </div>
-        <div class="text rt">
-            <p class="ys1 ys4">得力书包<b class="ys2 ys4">Bag</b></p>
 
-            <p class="ys3 ys4">给你满载而归的喜悦</p>
-        </div>
-
-    </div>
-    <div class="product_3 lf">
-        <div class="aside lf">
-            <img id="aside_image3" src="../static/images/index/index_Sbanner_img3.png" alt=""/>
-        </div>
-        <div class="text rt">
-            <p class="ys1">刀鱼焖排骨</p>
-            <p class="ys3">吃饱了才有力气学习</p>
-        </div>
-    </div>
-</div>
-<!-- welcome部分-->
-<div id="welcome">
-    <a href="">阅读更多>></a>
-</div>
-<!-- 学习用品-->
-<div id="study">
-    <p>学习用品<span>爱学习 享品质工作</span></p>
-
-    <div class="study_left lf">
-        <div id="product_parameters_main">
-            <p><img src="../static/images/index/wenan.png" alt=""/></p>
-
-            <h3 id="product_name_main">联想(Lenovo) 小新Air13 pro版</h3>
-
-            <h3 id="product_preferential_main">限时特惠<b id="product_price_main">￥6688.00</b></h3>
-
-            <p class="view_details"><a href="product_details.html">查看详情</a></p>
-        </div>
-        <img id="study_product_main" src="../static/images/index/index_hot_study_img1.png" alt=""/>
-    </div>
-    <div class="study_right rt">
-        <div class="right_top">
-            <div id="product_parameters_vice1">
-                <h3 id="product_name_vice1">联想(Lenovo) 小新Air13 不超15mm才敢叫轻薄</h3>
-
-                <h3 id="product_preferential_vice1"><b id="product_price_vice1">￥6688.00</b></h3>
-
-                <p class="view_details"><a href="product_details.html" >查看详情</a></p>
-            </div>
-            <img id="study_product_vice1" src="../static/images/index/index_hot_study_img2.png" alt=""/>
-        </div>
-        <div class="right_bottom">
-            <div id="product_parameters_vice2">
-                <h3 id="product_name_vice2">雅致布面年历本 张扬个性，点亮生活新时尚</h3>
-
-                <h3 id="product_preferential_vice2"><b id="product_price_vice2">￥68.00</b></h3>
-
-                <p class="view_details"><a href="product_details.html" >查看详情</a></p>
-                <img id="study_product_vice2" src="../static/images/index/index_hot_study_img3.png" alt=""/>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 美食餐饮-->
-<div id="gourmet">
-    <p>美食餐饮<span>爱美食 享品质生活</span></p>
-
-    <div class="bellows lf">
-        <div class="bellows_item">
-            <div class="bellows_header">
-                <h3>红烧肉盖饭(吉野家)</h3>
-            </div>
-            <div class="">
-                <div class="bellows_content">
-                    <p>
-                        红烧肉是热菜菜谱之一。以五花肉为制作主料，香甜松软。最好选用肥瘦相间的三层肉（五花肉）来做。红烧肉的烹饪技巧以砂锅为主，肥瘦相间，香甜松软，入口即化。红烧肉在我国各地流传甚广，是一道著名的大众菜肴,当然也是大家最喜欢的菜。
-                    </p></div>
-            </div>
-        </div>
-        <div class="bellows_item">
-            <div class="bellows_header">
-                <h3>春卷套餐(魏家凉皮)</h3>
-            </div>
-            <div class="bellows_content-wrapper" style="display: block">
-                <div class="bellows_content">
-                    <p>魏家凉皮怎么样?目前为止，魏家餐饮团队以“和谐、高效、奋进”为准则，坚持“全心全情、和谐共赢”的团队发展理念。带领魏家餐饮管理公司迈向新的高度。</p>
-                </div>
-            </div>
-        </div>
-        <div class="bellows_item">
-            <div class="bellows_header active">
-                <h3>营养海鲜汤(山西面食家)</h3>
-            </div>
-            <div class="bellows_content-wrapper">
-                <div class="bellows_content">
-                    <p>汤汁的香味在口里弥漫开来的新概念面条！粗粗的3mm面条中有凹凸，吃面条时也会跟着到嘴里来，使海鲜汤的味道和风味极大化。</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="food_detail rt">
-        <div>
-            <div class="food1 lf">
-                <img src="../static/images/index/index_hot_food_img1.png" alt=""/>
-
-                <h2>红烧肉盖饭套餐<span> (吉野家) </span></h2>
-
-                <p>￥20.00</p>
-                <a href="item_food.html">立即订餐</a>
-            </div>
-            <div class="food1 lf">
-                <img src="../static/images/index/index_hot_food_img2.png" alt="" id="food1"/>
-
-                <h2>全素套餐<span> (魏家凉皮) </span></h2>
-
-                <p>￥16.00</p>
-                <a href="item_food.html">立即订餐</a>
-            </div>
-            <div class="food1 lf" >
-                <img src="../static/images/index/index_hot_food_img3.png" alt=""/>
-
-                <h2>营养海鲜汤<span> (山西面食家) </span></h2>
-
-                <p>￥25.00</p>
-                <a href="item_food.html">立即订餐</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- 品质保障，私人定制等-->
 <div id="foot_box">
@@ -246,6 +72,11 @@
         <h3>专属特权</h3>
     </div>
 </div>
+
+
+
+
+
 <!-- 页面底部-->
 <div class="foot_bj">
     <div id="foot">
@@ -338,18 +169,69 @@ function load_data() {
         }
     }else
     {
-        islogin.innerHTML = '<a href="/login">登录</a>';
+        islogin.innerHTML = '<a href="/user/login">登录</a>';
     }
 }
-var isloginSelect = "<select οnchange='clickChange()'><option>我的信息</option><option>收货地址</option><option>登出</option></select>";
-function show() {
-    var islogin = document.getElementById('islogin');
-    islogin.innerHTML = islogin.innerText+isloginSelect;
-}
+// var isloginSelect = "<select οnchange='clickChange()'><option>我的信息</option><option>收货地址</option><option>登出</option></select>";
+// function show() {
+//     var islogin = document.getElementById('islogin');
+//     islogin.innerHTML = islogin.innerText+isloginSelect;
+// }
 
 </script>
+<script>
+    // $.ajax({
+    //     type: "post",
+    //     url:"/goods/listAll",
+    //     data:{},
+    //     async: false,
+    //     success:function (data) {
+    //         var str = "";
+    //         str +="<table><thead><tr><th>商品名称</th><th>商品描述</th><th>商品价格</th><th>商品图片</th></thead><tbody>";
+    //         $.each(data,function(index,element){
+    //             str +="<tr><td>"+element['goodsname']+"</td><td>"+element['goodsdescript']+"</td><td>"+element['goodsunitprice']+"</td><td>"+element['goodsimagename']+"</td></tr>";
+    //         })
+    //         str +="</tbody></table>";
+    //         $("#goods").append(str);
+    //     }
+    // })
+
+</script>
+<script>
+    // function toGoodsInfo(id) {
+    //     if (id){
+    //         window.location.href = "/goods/"+id;
+    //     }else {
+    //         window.location.href = "templates/404.html";
+    //     }
+    // }
+    // var id = location.pathname.match(/[^(\/goods\/)]/g)[0];
+
+    const toGoodsInfo = id => window.location.href =  id ? "/goods/detail" : "goods/404";
+
+    $.ajax({
+        type: "post",
+        url:"/goods/listAll",
+        data:{},
+        async: false,
+        success:function (data) {
+            var str = "";
+            $.each(data,function(index,element){
+                str +="<div class='good-item' data-good-id="+element['goodsid']+"><img src="+element['goodsimagename']+"></div><div><p>"+element['goodsname']+"</p><br><span class='price'b>￥</b><span class='priceContent'>"+element['goodsunitprice']+"</span></span></div>";
+            })
+            $("#content_box").append(str);
+            $('.good-item').click(function ()  {
+                const id  = $(this).attr('data-good-id');
+                sessionStorage.setItem("goodsId",id);
+                toGoodsInfo(id);
+            })
+        }
+    })
+
+</script>
+
+
+
+
 </body>
 </html>
-<!--        for (var i = 0; i<ishidden.length;i++) {
-            divset[i].style.display="block";
-        }-->

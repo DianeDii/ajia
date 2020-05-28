@@ -102,7 +102,7 @@ public class customerController {
         return modelAndView;
     }
 
-    @PutMapping("/changeTel")
+    @PostMapping("/changeTel")
     public ModelAndView changeTel(HttpSession session,HttpServletRequest request){
         TbCustomer user = customerService.login(session.getAttribute("name").toString());
        String tel = request.getParameter("tel");

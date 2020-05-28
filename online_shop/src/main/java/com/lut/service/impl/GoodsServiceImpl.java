@@ -20,4 +20,10 @@ public class GoodsServiceImpl implements GoodsService {
     public List<TbGoods> showGoodsByField(String goodName) {
         return tbGoodsMapper.findGoodsByFiled(goodName);
     }
+
+    @Override
+    public TbGoods getGoodsDetail(Integer id) {
+        return tbGoodsMapper.selectByPrimaryKey(id);
+    }
 }
+
