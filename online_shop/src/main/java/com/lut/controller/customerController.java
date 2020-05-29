@@ -62,7 +62,7 @@ public class customerController {
             if (power == 1 ){
                 modelAndView.setViewName("index");
             }else if (power ==2){
-                modelAndView.setViewName("houtai_index");
+                modelAndView.setViewName("admin/index");
             }
 
         }else {
@@ -120,10 +120,10 @@ public class customerController {
 
 //    管理员方法
 //    页面还没好
-    @RequestMapping("/changeGoods")
-    public ModelAndView changeGoods(){
+    @RequestMapping("/welcome")
+    public ModelAndView welcome(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("member-edit");
+        modelAndView.setViewName("admin/welcome");
         return modelAndView;
     }
 }

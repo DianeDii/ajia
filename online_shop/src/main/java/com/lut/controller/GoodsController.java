@@ -98,4 +98,16 @@ public class GoodsController {
         modelAndView.setViewName("404");
         return modelAndView;
     }
+    @RequestMapping("/manGoods")
+    public ModelAndView changeGoods(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/member-list");
+        return modelAndView;
+    }
+    @RequestMapping("/editGoods")
+    public ModelAndView editGoods(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/member-edit");
+        return modelAndView;
+    }
 }
