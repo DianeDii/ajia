@@ -3,14 +3,11 @@ package com.lut.controller;
 import com.lut.model.TbGoods;
 import com.lut.service.impl.GoodsServiceImpl;
 import io.swagger.annotations.Api;
-import io.swagger.models.Model;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Api(value = "/goods",tags = "商品API")
@@ -49,7 +46,8 @@ public class GoodsController {
         goodsService.delGoods(goodsId);
     }
     @PostMapping("/update")
-    public void updateGoods(HttpServletRequest request){
+    public void updateGoods(HttpServletRequest request,@RequestParam(value = "res") Integer goodsid){
+        Integer data = goodsid;
         String goodsName = request.getParameter("goodsName");
         Integer goodstypeid = Integer.parseInt(request.getParameter("goodstypeid"));
         String goodsdescript = request.getParameter("goodsdescript");
@@ -84,6 +82,12 @@ public class GoodsController {
     }
     @RequestMapping("/detail")
     public ModelAndView detailPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("goodsDetail");
+        return modelAndView;
+    }
+    @RequestMapping("/toupdate")
+    public ModelAndView updateGoodsPage(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsDetail");
         return modelAndView;

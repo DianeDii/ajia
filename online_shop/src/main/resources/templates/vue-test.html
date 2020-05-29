@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- import stylesheet -->
+    <link rel="stylesheet" href="//unpkg.com/view-design/dist/styles/iview.css">
+    <!-- import iView -->
+    <script src="//unpkg.com/view-design/dist/iview.min.js"></script>
+    <style>
+        .layout{
+            border: 1px solid #d7dde4;
+            background: #f5f7f9;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .layout-logo{
+            width: 100px;
+            height: 30px;
+            background: #5b6270;
+            border-radius: 3px;
+            float: left;
+            position: relative;
+            top: 15px;
+            left: 20px;
+        }
+        .layout-nav{
+            width: 420px;
+            margin: 0 auto;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="layout">
+        <Layout>
+            <Header>
+                <i-menu mode="horizontal" theme="dark" active-name="1">
+                    <div class="layout-logo"></div>
+                    <div class="layout-nav">
+                        <Menu-Item name="1">
+                            <Icon type="ios-navigate"></Icon>
+                            Item 1
+                        </Menu-Item>
+                        <Menu-Item name="2">
+                            <Icon type="ios-keypad"></Icon>
+                            Item 2
+                        </Menu-Item>
+                        <Menu-Item name="3">
+                            <Icon type="ios-analytics"></Icon>
+                            Item 3
+                        </Menu-Item>
+                        <Menu-Item name="4">
+                            <Icon type="ios-paper"></Icon>
+                            Item 4
+                        </Menu-Item>
+                    </div>
+                </i-menu>
+            </Header>
+            <Layout>
+                <Sider hide-trigger :style="{background: '#fff'}">
+                    <i-menu active-name="1-2" theme="light" width="auto" :open-names="['1']" @on-select="handleMenuSelect">
+                        <Submenu name="1">
+                            <template slot="title">
+                                <Icon type="ios-navigate"></Icon>
+                                Item 1
+                            </template>
+                            <Menu-Item name="1-1">Option 1</Menu-Item>
+                            <Menu-Item name="1-2">Option 2</Menu-Item>
+                            <Menu-Item name="1-3">Option 3</Menu-Item>
+                        </Submenu>
+                        <Submenu name="2">
+                            <template slot="title">
+                                <Icon type="ios-keypad"></Icon>
+                                Item 2
+                            </template>
+                            <Menu-Item name="2-1">Option 1</Menu-Item>
+                            <Menu-Item name="2-2">Option 2</Menu-Item>
+                        </Submenu>
+                        <Submenu name="3">
+                            <template slot="title">
+                                <Icon type="ios-analytics"></Icon>
+                                Item 3
+                            </template>
+                            <Menu-Item name="3-1">Option 1</Menu-Item>
+                            <Menu-Item name="3-2">Option 2</Menu-Item>
+                        </Submenu>
+                    </i-menu>
+                </Sider>
+                <Layout :style="{padding: '0 24px 24px'}">
+                    <Content :style="{padding: '24px', minHeight: '700px', background: '#fff', marginTop: '24px', }">
+                        {{contentJSX}}
+                    </Content>
+                </Layout>
+            </Layout>
+        </Layout>
+    </div>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            columns: [
+                {
+                    title: '姓名',
+                    slot: 'name'
+                },
+                {
+                    title: '年龄',
+                    slot: 'age'
+                },
+                {
+                    title: '出生日期',
+                    slot: 'birthday'
+                },
+                {
+                    title: '地址',
+                    slot: 'address'
+                },
+                {
+                    title: '操作',
+                    slot: 'action'
+                }
+            ],
+            data: [
+                {
+                    name: '王小明',
+                    age: 18,
+                    birthday: '919526400000',
+                    address: '北京市朝阳区芍药居'
+                },
+                {
+                    name: '张小刚',
+                    age: 25,
+                    birthday: '696096000000',
+                    address: '北京市海淀区西二旗'
+                },
+                {
+                    name: '李小红',
+                    age: 30,
+                    birthday: '563472000000',
+                    address: '上海市浦东新区世纪大道'
+                },
+                {
+                    name: '周小伟',
+                    age: 26,
+                    birthday: '687024000000',
+                    address: '深圳市南山区深南大道'
+                }
+            ],
+            editIndex: -1,  // 当前聚焦的输入框的行数
+            editName: '',  // 第一列输入框，当然聚焦的输入框的输入内容，与 data 分离避免重构的闪烁
+            editAge: '',  // 第二列输入框
+            editBirthday: '',  // 第三列输入框
+            editAddress: '',  // 第四列输入框
+            itemIndex: '1-1', //记录当前点击的item
+            contentJSX: ''
+        },
+        watch: {
+            itemIndex: function (item) {
+                switch (item) {
+                    case '1-1':
+                        this.contentJSX = (
+                            <i-table :columns="columns" :data="data">
+                        <template slot-scope="{ row, index }" slot="name">
+                        <Input type="text" v-model="editName" v-if="editIndex === index" />
+                        <span v-else>{{ row.name }}</span>
+                    </template>
+
+                    <template slot-scope="{ row, index }" slot="age">
+                        <Input type="text" v-model="editAge" v-if="editIndex === index" />
+                        <span v-else>{{ row.age }}</span>
+                    </template>
+
+                    <template slot-scope="{ row, index }" slot="birthday">
+                        <Input type="text" v-model="editBirthday" v-if="editIndex === index" />
+                        <span v-else>{{ getBirthday(row.birthday) }}</span>
+                    </template>
+
+                    <template slot-scope="{ row, index }" slot="address">
+                        <Input type="text" v-model="editAddress" v-if="editIndex === index" />
+                        <span v-else>{{ row.address }}</span>
+                    </template>
+
+                    <template slot-scope="{ row, index }" slot="action">
+                        <div v-if="editIndex === index">
+                        <i-button @click="handleSave(index)">保存</i-button>
+                        <i-button @click="editIndex = -1">取消</i-button>
+                        </div>
+                        <div v-else>
+                    <i-button @click="handleEdit(row, index)">操作</i-button>
+                        </div>
+                        </template>
+                        </i-table>
+                        );
+                        break;
+                }
+            }
+        },
+        methods: {
+            handleEdit (row, index) {
+                this.editName = row.name;
+                this.editAge = row.age;
+                this.editAddress = row.address;
+                this.editBirthday = row.birthday;
+                this.editIndex = index;
+            },
+            handleSave (index) {
+                this.data[index].name = this.editName;
+                this.data[index].age = this.editAge;
+                this.data[index].birthday = this.editBirthday;
+                this.data[index].address = this.editAddress;
+                this.editIndex = -1;
+            },
+            getBirthday (birthday) {
+                const date = new Date(parseInt(birthday));
+                const year = date.getFullYear();
+                const month = date.getMonth() + 1;
+                const day = date.getDate();
+                return `${year}-${month}-${day}`;
+            },
+            handleMenuSelect(name) {
+                console.log(name, "000")
+            },
+        }
+    })
+</script>
+</body>
+</html>
