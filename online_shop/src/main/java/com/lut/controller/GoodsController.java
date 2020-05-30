@@ -47,8 +47,8 @@ public class GoodsController {
 
     }
     @PostMapping("/delete")
-    public void delGoods(Integer goodsId){
-        goodsService.delGoods(goodsId);
+    public void delGoods(@RequestParam("id") Integer goodsid){
+        goodsService.delGoods(goodsid);
     }
     @PostMapping("/update")
     public void updateGoods(@RequestParam("id") Integer goodsid,@RequestParam("goodsName") String goodsname,
