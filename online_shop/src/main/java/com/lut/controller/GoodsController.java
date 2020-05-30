@@ -24,23 +24,27 @@ public class GoodsController {
         return  goodsService.showGoods();
     }
     @PostMapping("/addGoods")
-    public void addGoods(HttpServletRequest request){
-        String goodsName = request.getParameter("goodsName");
-        Integer goodstypeid = Integer.parseInt(request.getParameter("goodstypeid"));
-        String goodsdescript = request.getParameter("goodsdescript");
-        Integer goodsunitprice = Integer.parseInt(request.getParameter("goodsunitprice"));
-        String goodsimagename = request.getParameter("goodsimagename");
-        Integer sellcount = Integer.parseInt(request.getParameter("sellcount"));
-
+    public void addGoods(@RequestParam("goodsName") String goodsname,
+                         @RequestParam("goodstypeid") Integer goodstypeid,
+                         @RequestParam("goodsdescript") String goodsdescript,
+                         @RequestParam("goodsunitprice") Integer goodsunitprice,
+                         @RequestParam("goodsimagename") String goodsimagename){
         TbGoods tbGoods = new TbGoods();
-        tbGoods.setGoodsname(goodsName);
+        tbGoods.setGoodsname(goodsname);
         tbGoods.setGoodsdescript(goodsdescript);
         tbGoods.setGoodsid(null);
         tbGoods.setGoodsimagename(goodsimagename);
         tbGoods.setGoodstypeid(goodstypeid);
         tbGoods.setGoodsunitprice(goodsunitprice);
-        tbGoods.setSellcount(sellcount);
+        tbGoods.setSellcount(0);
         goodsService.addGoods(tbGoods);
+    }
+    @RequestMapping("/addGoods")
+    public ModelAndView addGoods(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/member-add");
+        return modelAndView;
+
     }
     @PostMapping("/delete")
     public void delGoods(Integer goodsId){
