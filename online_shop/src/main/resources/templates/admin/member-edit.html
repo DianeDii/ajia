@@ -19,10 +19,10 @@
     <body>
         <div class="layui-fluid">
             <div class="layui-row">
-                <form class="layui-form" method="post" action="/goods/update">
+                <form class="layui-form" id="form1" onsubmit="return false" method="post" action="##">
 
                     <div class="layui-form-item">
-                        <label for="goodsName" class="layui-form-label">
+                        <label  class="layui-form-label">
                             <span class="x-red">*</span>商品名称
                         </label>
                         <div class="layui-input-inline">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="goodstypeid" class="layui-form-label">
+                        <label class="layui-form-label">
                             <span class="x-red">*</span>类型id
                         </label>
                         <div class="layui-input-inline">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="goodsdescript" class="layui-form-label">
+                        <label class="layui-form-label">
                             <span class="x-red">*</span>商品描述
                         </label>
                         <div class="layui-input-inline">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="goodsunitprice" class="layui-form-label">
+                        <label class="layui-form-label">
                             <span class="x-red">*</span>商品价格
                         </label>
                         <div class="layui-input-inline">
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label for="goodsimagename" class="layui-form-label">
+                        <label class="layui-form-label">
                             <span class="x-red">*</span>商品图片路径
                         </label>
                         <div class="layui-input-inline">
@@ -84,12 +84,53 @@
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label"></label>
-                        <button class="layui-btn" type="submit" onclick="toIndex()" >修改</button>
+                        <input class="layui-btn" type="button" onclick="submitdata()"  value="修改">
                     </div>
                 </form>
             </div>
         </div>
 <script>
+    function submitdata() {
+        var id = sessionStorage.getItem("id");
+        var data = $('#form1').serialize();
+        data += "&id="+id;
+        // $.ajax({
+        //     type: "post",
+        //     url:"/goods/update",
+        //     data:{"id":id},
+        //     success:function (data) {
+        //
+        //     }
+        // })
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            // dataType: "json",//预期服务器返回的数据类型
+            url: "/goods/update" ,//url
+            data: data,
+            success: function (result) {
+                // console.log(result);//打印服务端返回的数据(调试用)
+                // if (result.resultCode == 200) {
+                //     alert("SUCCESS");
+                // }
+                // ;
+            },
+            //以下为调试用
+            // error: function (xhr, textStatus, errorThrown) {
+            //     /*错误信息处理*/
+            //     alert("进入error---");
+            //     alert("状态码："+xhr.status);
+            //     alert("状态:"+xhr.readyState);//当前状态,0-未初始化，1-正在载入，2-已经载入，3-数据进行交互，4-完成。
+            //     alert("错误信息:"+xhr.statusText );
+            //     alert("返回响应信息："+xhr.responseText );//这里是详细的信息
+            //     alert("请求状态："+textStatus);
+            //     alert(errorThrown);
+            //     alert("请求失败");
+            // }
+        });
+        window.location.href = "/goods/manGoods";
+    }
 </script>
     </body>
 

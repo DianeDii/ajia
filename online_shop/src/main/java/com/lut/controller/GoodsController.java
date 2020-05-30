@@ -3,6 +3,7 @@ package com.lut.controller;
 import com.lut.model.TbGoods;
 import com.lut.service.impl.GoodsServiceImpl;
 import io.swagger.annotations.Api;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,17 +47,18 @@ public class GoodsController {
         goodsService.delGoods(goodsId);
     }
     @PostMapping("/update")
-    public void updateGoods(HttpServletRequest request,@RequestParam(value = "res") Integer goodsid){
+    public void updateGoods(@RequestParam("id") Integer goodsid,@RequestParam("goodsName") String goodsname,
+                            @RequestParam("goodstypeid") Integer goodstypeid,
+                            @RequestParam("goodsdescript") String goodsdescript,
+                            @RequestParam("goodsunitprice") Integer goodsunitprice,
+                            @RequestParam("goodsimagename") String goodsimagename){
         Integer data = goodsid;
-        String goodsName = request.getParameter("goodsName");
-        Integer goodstypeid = Integer.parseInt(request.getParameter("goodstypeid"));
-        String goodsdescript = request.getParameter("goodsdescript");
-        Integer goodsunitprice = Integer.parseInt(request.getParameter("goodsunitprice"));
-        String goodsimagename = request.getParameter("goodsimagename");
-        TbGoods tbGoods = new TbGoods();
-        tbGoods.setGoodsname(goodsName);
+
+        TbGoods tbGoods = goodsService.getGoodsDetail(data);
+
+        tbGoods.setGoodsname(goodsname);
         tbGoods.setGoodsdescript(goodsdescript);
-        tbGoods.setGoodsid(null);
+        tbGoods.setGoodsid(data);
         tbGoods.setGoodsimagename(goodsimagename);
         tbGoods.setGoodstypeid(goodstypeid);
         tbGoods.setGoodsunitprice(goodsunitprice);
