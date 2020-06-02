@@ -299,6 +299,7 @@
         data:{},
         success: function (data) {
             var str = "";
+            localStorage.setItem('add_num', data?.length);
             $.each(data,function (index,element) {
 
                 str +="<tr>" +

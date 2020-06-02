@@ -156,67 +156,67 @@
 <!--添加到购物车 立即购买 收藏部分-->
 <script type="text/javascript">
     //加入购物车操作
-    var color;
-    var norms;
-    var buyAccount;
-    function getPro(){
-        //颜色取值
-        $("#choose_color input").each(function (i, item) {
-            if ($(this).hasClass("borderChange")) {
-                color = $(this).val();
-            }
-        })
-        console.log(color)
-        //规格取值
-        $(".avenge").each(function () {
-            if ($(this).hasClass("borderChange")) {
-                norms = $(this).html();
-            }
-        })
-        console.log(norms)
-        //数量取值
-        buyAccount = $("#buy-num").val();
-        console.log(buyAccount);
-    }
-    $("#add_cart").click(function (e) {
-        e.preventDefault();
-        getPro();
-        //如果未选择，请选择商品信息
-        if (!color || !norms ) {
-//            $("#add_cart").text("加入购物车").css({"background":"#f5f5f5","color":"#000"})
-            alert("请选择商品信息");
-        }else{
-            $(".modal").show();
-            $(".modal_information span").html("是否将您的宝贝加入购物车");
-        }
-        $('.no').click(function(){
-            $('.modal').hide();
-        })
-        var params = {
-            itemColor: color,
-            itemModel: norms,
-            num: buyAccount,
-            //商品id    temId:${item.id}
-        };
-        $.ajax({
-            type: "post",
-            url: "/insertToCart.html",
-            data: params,
-            success: function (data) {
-                if (data == '200') {
-                    alert("添加购物车成功！");
-                } else if (data == 500) {
-                    alert("添加购物车失败！");
-                } else {
-                    alert("您还没登录呢！");
-                    window.location.href = data;
-                }
-            },
-            error: function (data) {
-//              alert("系统异常！");
-            }
-        });
-    })
+//     var color;
+//     var norms;
+//     var buyAccount;
+//     function getPro(){
+//         //颜色取值
+//         $("#choose_color input").each(function (i, item) {
+//             if ($(this).hasClass("borderChange")) {
+//                 color = $(this).val();
+//             }
+//         })
+//         console.log(color)
+//         //规格取值
+//         $(".avenge").each(function () {
+//             if ($(this).hasClass("borderChange")) {
+//                 norms = $(this).html();
+//             }
+//         })
+//         console.log(norms)
+//         //数量取值
+//         buyAccount = $("#buy-num").val();
+//         console.log(buyAccount);
+//     }
+//     $("#add_cart").click(function (e) {
+//         e.preventDefault();
+//         getPro();
+//         //如果未选择，请选择商品信息
+//         if (!color || !norms ) {
+// //            $("#add_cart").text("加入购物车").css({"background":"#f5f5f5","color":"#000"})
+//             alert("请选择商品信息");
+//         }else{
+//             $(".modal").show();
+//             $(".modal_information span").html("是否将您的宝贝加入购物车");
+//         }
+//         $('.no').click(function(){
+//             $('.modal').hide();
+//         })
+//         var params = {
+//             itemColor: color,
+//             itemModel: norms,
+//             num: buyAccount,
+//             //商品id    temId:${item.id}
+//         };
+//         $.ajax({
+//             type: "post",
+//             url: "/insertToCart.html",
+//             data: params,
+//             success: function (data) {
+//                 if (data == '200') {
+//                     alert("添加购物车成功！");
+//                 } else if (data == 500) {
+//                     alert("添加购物车失败！");
+//                 } else {
+//                     alert("您还没登录呢！");
+//                     window.location.href = data;
+//                 }
+//             },
+//             error: function (data) {
+// //              alert("系统异常！");
+//             }
+//         });
+//     })
 
 </script>
 <script>
@@ -339,7 +339,7 @@
     // var id = location.pathname.match(/[^(\/goods\/)]/g)[0];
     var id = sessionStorage.getItem("goodsId");
     $.ajax({
-        type: "get",z
+        type: "get",
         url:"/goods/"+id,
         data:{},
         async: false,
@@ -371,7 +371,7 @@
                 "            <button class='numberAdd'>+</button>" +
                 "        </p>" +
                 "        <div class='shops'>" +
-                "            <a href='cart.html' class='buy lf' id='buy_now'>立即购买</a>" +
+                "            <a href='cart.html' class='buy lf' id='buy_now' onclick='buy("+data.sellcount+")'>立即购买</a>" +
                 "        </div>" +
                 "    </div>" +
                 "</div>";
@@ -379,6 +379,36 @@
         }
     })
 
+</script>
+<script>
+
+    function buy(count) {
+        var buyNum =  $('#buy-num').val();
+        var goodCount = count; //库存
+        var islogin = document.getElementById("islogin");
+        var add_num = localStorage.getItem("add_num");
+        if(buyNum <= goodCount){
+            if (islogin !== null){
+                if (add_num !== 0 && add_num !== null){
+                    //跳转支付页面（二维码。面部，两个按钮，点面部h5调用摄像头，然后做个假动作，ok）
+                    //产生订单（订单内容），订单表感觉得重写，订单表和订单详情表为什么要分成两个表。想一下。
+                    $.ajax({
+
+                    })
+                }else {
+                    window.alert("您还未设置收货地址！");
+                    window.location.href = "/address/";
+                }
+
+            }else {
+                window.alert("您还未登录，请先登录后再购买");
+                window.location.href = "/user/login";
+            }
+        }else{
+            window.alert("库存不足，请重新选择");
+        }
+
+    }
 </script>
 //前台获取购买数量 var buyNum =  $('#buy-num').innerText;
 //判断是否登录if ( session === null 或其他状态){window.alert= "没登陆"，window。location.href = "/user/login"}else{

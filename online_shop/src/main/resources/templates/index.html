@@ -39,7 +39,7 @@
 <!--            订单未完成-->
             <li style="display: none" class="ishidden"><a href="/user/order">我的订单</a></li>
             <br>
-            <li style="display: none" class="ishidden"><a href="/user/login">登出</a></li>
+            <li style="display: none" class="ishidden"><a href="/user/login" onclick="loginout()">登出</a></li>
 <!--            <span id=value></span>-->
 <!--            <p th:text='${session.name}'></p>-->
 
@@ -72,11 +72,6 @@
         <h3>专属特权</h3>
     </div>
 </div>
-
-
-
-
-
 <!-- 页面底部-->
 <div class="foot_bj">
     <div id="foot">
@@ -189,7 +184,6 @@ function load_data() {
     //     }
     // }
     // var id = location.pathname.match(/[^(\/goods\/)]/g)[0];
-
     const toGoodsInfo = id => window.location.href =  id ? "/goods/detail" : "goods/404";
 
     $.ajax({
@@ -210,6 +204,10 @@ function load_data() {
             })
         }
     })
+    function loginout() {
+        localStorage.clear();
+        sessionStorage.clear();
+    }
 
 </script>
 
