@@ -4,6 +4,7 @@ import com.lut.model.TbReceive;
 import com.lut.model.TbReceiveExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface TbReceiveMapper {
     /**
@@ -93,4 +94,8 @@ public interface TbReceiveMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(TbReceive record);
+
+    //查询所有收货地址
+    @Select("select * from tb_receive where customerName = #{username}")
+    List<TbReceive> showAll(@Param("username") String username);
 }

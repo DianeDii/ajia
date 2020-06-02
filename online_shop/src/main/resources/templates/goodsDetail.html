@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8">
     <title>阿甲商城学子详情页</title>
@@ -10,6 +10,7 @@
     <script src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script>
 </head>
 <body>
+<span id="islogin" style="display: none" th:text='${session.name}'></span>
 <!-- 页面顶部-->
 <header id="top">
     <div id="logo" class="lf">
@@ -338,7 +339,7 @@
     // var id = location.pathname.match(/[^(\/goods\/)]/g)[0];
     var id = sessionStorage.getItem("goodsId");
     $.ajax({
-        type: "get",
+        type: "get",z
         url:"/goods/"+id,
         data:{},
         async: false,
@@ -350,13 +351,9 @@
                 "            <img id='mImg' src="+data.goodsimagename+"/>" +
                 "        </div>" +
                 "    </div>" +
-
                 "    <div class='right_detail lf'>" +
-
                 "        <h1>"+data.goodsname+"</h1>" +
-
                 "        <h3>"+data.goodsdescript+"</h3>" +
-
                 "        <div class='price'>" +
                 "            <div id='pro_price'><b>学员售价：</b><span>￥"+data.goodsunitprice+"</span></div>" +
                 "            <div class='promise'>" +
@@ -383,5 +380,8 @@
     })
 
 </script>
+//前台获取购买数量 var buyNum =  $('#buy-num').innerText;
+//判断是否登录if ( session === null 或其他状态){window.alert= "没登陆"，window。location.href = "/user/login"}else{
+//是否有设置过收货地址if(controller->showAll（）->返回的List的数量==0){跳转/address/}else{}}
 </body>
 </html>

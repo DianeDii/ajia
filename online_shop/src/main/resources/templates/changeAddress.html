@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="##" id="updateAdd">
+    <span>收货人姓名：</span><input type="text" name="receiveName"><br>
+    <span>收货人地址：</span><input type="text" name="receiveAddress"><br>
+    <span>收货人电话：</span><input type="text" name="receiveTel"><br>
+    <input type="button" onclick="updateAdd()" value="更新">
+</form>
+</body>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
+<script>
+    function updateAdd() {
+        var receiveid = sessionStorage.getItem("receiveid");
+        var data = $("#updateAdd").serialize();
+        data += "&receiveid="+receiveid;
+        $.ajax({
+            type: "POST",
+            url: "/address/update",
+            data:data,
+        })
+        window.alert("更新成功");
+        window.location.href = "/address/";
+    }
+</script>
+</html>

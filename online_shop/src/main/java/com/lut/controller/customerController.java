@@ -101,12 +101,6 @@ public class customerController {
         modelAndView.setViewName("myInfo");
         return modelAndView;
     }
-//    施工中...
-    @RequestMapping("/address")
-    public ModelAndView manAddress(){
-        ModelAndView modelAndView = new ModelAndView();
-        return modelAndView;
-    }
 
     @PostMapping("/changeTel")
     public ModelAndView changeTel(HttpSession session,HttpServletRequest request){
