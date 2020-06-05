@@ -4,6 +4,7 @@ import com.lut.model.TbOrder;
 import com.lut.model.TbOrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface TbOrderMapper {
     /**
@@ -93,4 +94,24 @@ public interface TbOrderMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(TbOrder record);
+
+    //管理员查看所有订单
+    @Select("select * from tb_order")
+    List<TbOrder> showAll();
+
+    //管理员查看所有未处理订单
+    @Select("select * from tb_order where orderstate = 0")
+    List<TbOrder> showAllfordeal();
+
+    //用户查看所有自己的订单
+    @Select("select * from tb_order where customerName = #{username};")
+    List<TbOrder> showAllForUser(@Param("username") String username);
+
+    //管理员处理订单
+    @Select("update tb_order set orderState = '1' where orderID = #{orderId};")
+    void dealOrder(@Param("orderId") Integer orderId);
+
+    //用户删除订单（订单状态改变为2）
+    @Select("update tb_order set orderState = '2' where orderID = #{orderId};")
+    void delOrder(@Param("orderId") Integer orderId);
 }

@@ -66,6 +66,8 @@ public interface TbGoodsMapper {
     //目前模糊查询时以正则匹配输入的字符，返回结果
     @Select("select * from tb_goods where goodsName like [${goodsName}]")
     List<TbGoods> findGoodsByFiled(@Param("goodsName") String goodsName);
+
+
     TbGoods selectByPrimaryKey(Integer goodsid);
 
     /**
@@ -99,4 +101,7 @@ public interface TbGoodsMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(TbGoods record);
+
+    @Select("select goodsUnitPrice from tb_goods where goodsID = #{id}")
+    int getGoodsPriceByGoodsId(@Param("id") Integer goodsId);
 }

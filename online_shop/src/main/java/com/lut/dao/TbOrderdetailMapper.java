@@ -4,6 +4,7 @@ import com.lut.model.TbOrderdetailExample;
 import com.lut.model.TbOrderdetailKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface TbOrderdetailMapper {
     /**
@@ -69,4 +70,9 @@ public interface TbOrderdetailMapper {
      * @mbggenerated
      */
     int updateByExample(@Param("record") TbOrderdetailKey record, @Param("example") TbOrderdetailExample example);
+
+
+    //通过订单id查询一个订单内所有商品
+    @Select("select goodsID from tb_orderdetail where orderID = #{orderId}")
+    List<Integer> findGoodsByOrderId(@Param("orderId")Integer orderId);
 }

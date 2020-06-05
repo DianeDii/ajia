@@ -23,4 +23,7 @@ public interface GoodsService {
 
     //更新商品
     int updateGoods(TbGoods tbGoods);
+
+    //根据商品id获取商品价格
+    int getGoodsPriceById(Integer goodsId);
 }

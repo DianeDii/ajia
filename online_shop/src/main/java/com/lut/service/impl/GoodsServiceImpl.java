@@ -40,5 +40,10 @@ public class GoodsServiceImpl implements GoodsService {
     public int updateGoods(TbGoods tbGoods) {
         return tbGoodsMapper.updateByPrimaryKey(tbGoods);
     }
+
+    @Override
+    public int getGoodsPriceById(Integer goodsId) {
+        return tbGoodsMapper.getGoodsPriceByGoodsId(goodsId);
+    }
 }
 
