@@ -57,10 +57,10 @@ public class OrderServiceImpl implements OrderService {
      * @return sum 订单总价格
      */
     @Override
-    public int sumGoodsPrice(List<Integer> goodsIdList) {
+    public int sumGoodsPrice(Integer[] goodsIdList) {
         int sum = 0;
-        for (int i =0 ; i <goodsIdList.size(); i ++){
-           sum += tbGoodsMapper.getGoodsPriceByGoodsId(goodsIdList.get(i));
+        for (int i =0 ; i <goodsIdList.length; i ++){
+           sum += tbGoodsMapper.getGoodsPriceByGoodsId(goodsIdList[i]);
         }
         return sum;
     }

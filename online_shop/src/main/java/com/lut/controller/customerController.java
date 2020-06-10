@@ -120,4 +120,6 @@ public class customerController {
         modelAndView.setViewName("admin/welcome");
         return modelAndView;
     }
+
+
 }

@@ -40,5 +40,5 @@ public interface OrderService {
     public void delOrder(Integer orderId);
 
     //计算订单商品总价格
-    public int sumGoodsPrice(List<Integer> goodsIdList);
+    public int sumGoodsPrice(Integer[] goodsIdList);
 }

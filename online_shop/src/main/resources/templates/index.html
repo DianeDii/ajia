@@ -6,6 +6,26 @@
     <link href="../static/css/index.css" rel="Stylesheet"/>
     <link href="../static/css/animate.css" rel="Stylesheet"/>
     <link rel="stylesheet" href="../static/css/slide.css"/>
+    <style>
+        #content_box{
+            display: flex;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        #content_box .good-item {
+            flex-basis: 240px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+        }
+
+        .good-item > p {
+            margin: 6px 0;
+        }
+    </style>
 </head>
 <body onload="load_data()">
 <!-- 页面顶部-->
@@ -38,7 +58,7 @@
             <li style="display: none" class="ishidden"><a href="/address/">收货地址</a></li>
 <!--            订单未完成-->
             <li style="display: none" class="ishidden"><a href="/user/order">我的订单</a></li>
-            <br>
+            <li style="display: none" class="ishidden"><a href="/order/toCartPage">购物车</a></li>
             <li style="display: none" class="ishidden"><a href="/user/login" onclick="loginout()">登出</a></li>
 <!--            <span id=value></span>-->
 <!--            <p th:text='${session.name}'></p>-->
@@ -152,7 +172,7 @@
     // if(session 不为空){获取主页登录节点，并把它修改为 "欢迎+用户名"}else{登录按钮}
 function load_data() {
     // var loginSession = localStorage.getItem("name");
-    var test = "aaa";
+    // var test = "aaa";
     // var  ='<%=session.getAttribute(name)%>';
     var islogin = document.getElementById('islogin');
     var ishidden = document.getElementsByClassName('ishidden');
@@ -194,7 +214,11 @@ function load_data() {
         success:function (data) {
             var str = "";
             $.each(data,function(index,element){
-                str +="<div class='good-item' data-good-id="+element['goodsid']+"><img src="+element['goodsimagename']+"></div><div><p>"+element['goodsname']+"</p><br><span class='price'b>￥</b><span class='priceContent'>"+element['goodsunitprice']+"</span></span></div>";
+                str +="<div class='good-item' data-good-id="+element['goodsid']+">" +
+                    "<img src="+element['goodsimagename']+">" +
+                    "<p>"+element['goodsname']+"</p>" +
+                    "<span class='price'b>￥</b><span class='priceContent'>"+element['goodsunitprice']+"</span></span>" +
+                    "</div>";
             })
             $("#content_box").append(str);
             $('.good-item').click(function ()  {
@@ -205,9 +229,13 @@ function load_data() {
         }
     })
     function loginout() {
-        localStorage.clear();
+        // localStorage.clear();
         sessionStorage.clear();
     }
+
+
+</script>
+<script>
 
 </script>
 

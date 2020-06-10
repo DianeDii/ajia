@@ -18,7 +18,9 @@
     </div>
 
 </header>
-<div id="content_box"></div>
+<div id="content_box">
+    <di><a href="javascript:history.go(-1)">返回主页</a></di>
+</div>
 <!--产品预览-->
 <!--<div id="shop_detail">-->
 <!--    &lt;!&ndash; 左侧&ndash;&gt;-->
@@ -244,7 +246,7 @@
                 $("#top").removeClass("fixed_nav");
             }
         })
-        //介绍区域右侧导航
+    //     //介绍区域右侧导航
         $("#iteminfo .right p").click(function () {
             //$(this).addClass("clic").siblings().removeClass("clic");
             $(this).css("background-color", "#0AA1ED").siblings().css("background-color", "#e8e8e8");
@@ -268,17 +270,17 @@
         })
 
         /**ajax提交**/
-        $(".avenge").each(function (i, item) {
-            $(this).click(function (norms) {
-                $(this).addClass("borderChange")
-                if ($(this).siblings().addClass("borderChange")) {
-                    $(this).siblings().removeClass("borderChange")
-                }
-                //规格选择
-                var norms = $(this).html();
-                console.log(norms)
-            })
-        })
+        // $(".avenge").each(function (i, item) {
+        //     $(this).click(function (norms) {
+        //         $(this).addClass("borderChange")
+        //         if ($(this).siblings().addClass("borderChange")) {
+        //             $(this).siblings().removeClass("borderChange")
+        //         }
+        //         //规格选择
+        //         var norms = $(this).html();
+        //         console.log(norms)
+        //     })
+        // })
         //颜色选择
         $("#choose_color input").each(function (i, item) {
             $(this).click(function () {
@@ -297,22 +299,22 @@
         })
 
         /*立即购买*/
-        $("#buy_now").click(function (e) {
-            //如果未选择，请选择商品信息
-            if (color == undefined && norms == undefined) {
-//            $("#add_cart").text("加入购物车").css({"background":"#f5f5f5","color":"#000"})
-                alert("请选择商品信息");
-            }else{
-                location.href="cart.html";
-            }
-            e.preventDefault();
-            var color = $("#choose_color input.borderChange").val();
-            var model = $("#choose_model span.borderChange").html();
-            var num = $("#buy-num").val();
-            // 后台需要的参数
-            // var url = '/toOrder/'+${item.id}+'.html?&num='+num+'&itemColor='+color+'&itemModel='+model;
-//             window.location.href = url;
-        })
+//         $("#buy_now").click(function (e) {
+//             //如果未选择，请选择商品信息
+//             if (color == undefined && norms == undefined) {
+// //            $("#add_cart").text("加入购物车").css({"background":"#f5f5f5","color":"#000"})
+//                 alert("请选择商品信息");
+//             }else{
+//                 location.href="cart.html";
+//             }
+//             e.preventDefault();
+//             var color = $("#choose_color input.borderChange").val();
+//             var model = $("#choose_model span.borderChange").html();
+//             var num = $("#buy-num").val();
+//             // 后台需要的参数
+//             // var url = '/toOrder/'+${item.id}+'.html?&num='+num+'&itemColor='+color+'&itemModel='+model;
+// //             window.location.href = url;
+//         })
     })
 </script>
 <!--图片效果-->
@@ -370,8 +372,9 @@
                 "            <input type='text' value='1' class='number' id='buy-num'>" +
                 "            <button class='numberAdd'>+</button>" +
                 "        </p>" +
+                "       <a class='shop lf' id='add_cart'onclick='addCart("+data.goodsid+")'>购物车</a>"+
                 "        <div class='shops'>" +
-                "            <a href='cart.html' class='buy lf' id='buy_now' onclick='buy("+data.sellcount+")'>立即购买</a>" +
+                "            <a class='buy lf' id='buy_now' onclick='buy("+data.sellcount+")'>立即购买</a>" +
                 "        </div>" +
                 "    </div>" +
                 "</div>";
@@ -387,13 +390,19 @@
         var goodCount = count; //库存
         var islogin = document.getElementById("islogin");
         var add_num = localStorage.getItem("add_num");
+        var goodsList = [id];
         if(buyNum <= goodCount){
             if (islogin !== null){
                 if (add_num !== 0 && add_num !== null){
                     //跳转支付页面（二维码。面部，两个按钮，点面部h5调用摄像头，然后做个假动作，ok）
                     //产生订单（订单内容），订单表感觉得重写，订单表和订单详情表为什么要分成两个表。想一下。
                     $.ajax({
-
+                        type: "GET",
+                        url: "/order/create",
+                        data: "goodsList"+goodsList,
+                        success: function (data) {
+                            window.location.href = "/address/toPayPage";
+                        },
                     })
                 }else {
                     window.alert("您还未设置收货地址！");
@@ -408,6 +417,21 @@
             window.alert("库存不足，请重新选择");
         }
 
+    }
+     cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+    function addCart() {
+        cartList.push(id);
+        localStorage.setItem("cartList",JSON.stringify(cartList));
+        window.alert("添加购物车成功");
+        var cartBtn = document.getElementById("add_cart");
+        cartBtn.innerHTML ="<a class='shop lf' id='cancel_cart'onclick='cancelCart()'>已加入</a>";
+    }
+    //取消加入购物车
+    function cancelCart(goodsid) {
+        cartList.pop();
+        localStorage.setItem("cartList",JSON.stringify(cartList));
+        var cartBtn = document.getElementById("cancel_cart");
+        cartBtn.innerHTML = "<a class='shop lf' id='add_cart'onclick='addCart()'>购物车</a>";
     }
 </script>
 //前台获取购买数量 var buyNum =  $('#buy-num').innerText;

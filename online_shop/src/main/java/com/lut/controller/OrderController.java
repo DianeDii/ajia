@@ -6,6 +6,7 @@ import com.lut.service.impl.OrderServiceImpl;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ public class OrderController {
      * @param session
      * @param goodsList 订单商品id列表
      */
-    @PostMapping("addOrder")
-    public void addOrder(HttpSession session, @RequestParam("goodsList")List<Integer> goodsList){
+    @GetMapping("create")
+    public void addOrder(HttpSession session, @RequestParam("goodsList") Integer[] goodsList){
         TbOrder tbOrder = new TbOrder();
         tbOrder.setOrderid(null);
 
@@ -43,10 +44,10 @@ public class OrderController {
         tbOrder.setTotalmoney(orderService.sumGoodsPrice(goodsList));
 
         //set订单详情
-        for (int i = 0;i < goodsList.size(); i++){
+        for (int i = 0;i < goodsList.length; i++){
             TbOrderdetailKey tbOrderdetailKey = new TbOrderdetailKey();
         tbOrderdetailKey.setOrderid(tbOrder.getOrderid());
-        tbOrderdetailKey.setGoodsid(goodsList.get(i));
+        tbOrderdetailKey.setGoodsid(goodsList[i]);
         orderService.addOrderDetail(tbOrderdetailKey);
         }
         orderService.addOrder(tbOrder);
@@ -61,4 +62,16 @@ public class OrderController {
         orderService.dealOrder(orderId);
     }
 
+    @RequestMapping("/toPayPage")
+    public ModelAndView toPayPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("payment");
+        return modelAndView;
+    }
+    @RequestMapping("/toCartPage")
+    public ModelAndView toCartPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("cart");
+        return  modelAndView;
+    }
 }
