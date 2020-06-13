@@ -69,9 +69,8 @@ public class GoodsController {
         goodsService.updateGoods(tbGoods);
     }
     @PostMapping("/updateNum")
-    public void updateGoodsNum(HttpServletRequest request){
-        Integer sellcount = Integer.parseInt(request.getParameter("sellcount"));
-        TbGoods tbGoods = new TbGoods();
+    public void updateGoodsNum(@RequestParam("id") Integer goodsid,@RequestParam("sellCount") Integer sellcount){
+        TbGoods tbGoods = goodsService.getGoodsDetail(goodsid);
         tbGoods.setSellcount(sellcount);
         goodsService.updateGoods(tbGoods);
     }
@@ -114,6 +113,20 @@ public class GoodsController {
     public ModelAndView editGoods(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin/member-edit");
+        return modelAndView;
+    }
+    //主页跳数量管理
+    @RequestMapping("/changeGoodsNum")
+    public ModelAndView changeGoodsNum(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/num-change");
+        return modelAndView;
+    }
+    //数量管理跳具体修改页面
+    @RequestMapping("/changeNum")
+    public ModelAndView changeNum(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/num-edit");
         return modelAndView;
     }
 }
