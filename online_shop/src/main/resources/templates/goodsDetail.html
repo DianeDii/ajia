@@ -397,12 +397,24 @@
                     //跳转支付页面（二维码。面部，两个按钮，点面部h5调用摄像头，然后做个假动作，ok）
                     //产生订单（订单内容），订单表感觉得重写，订单表和订单详情表为什么要分成两个表。想一下。
                     $.ajax({
-                        type: "GET",
+                        type: "POST",
                         url: "/order/create",
-                        data: "goodsList"+goodsList,
+                        data: {"goodsList": JSON.stringify(goodsList)},
+                        traditional:true,
                         success: function (data) {
-                            window.location.href = "/address/toPayPage";
+                            window.location.href = "/order/toPayPage";
                         },
+                        error: function (xhr, textStatus, errorThrown) {
+                            /*错误信息处理*/
+                            alert("进入error---");
+                            alert("状态码："+xhr.status);
+                            alert("状态:"+xhr.readyState);//当前状态,0-未初始化，1-正在载入，2-已经载入，3-数据进行交互，4-完成。
+                            alert("错误信息:"+xhr.statusText );
+                            alert("返回响应信息："+xhr.responseText );//这里是详细的信息
+                            alert("请求状态："+textStatus);
+                            alert(errorThrown);
+                            alert("请求失败");
+                        }
                     })
                 }else {
                     window.alert("您还未设置收货地址！");

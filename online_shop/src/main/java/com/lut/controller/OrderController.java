@@ -26,31 +26,30 @@ public class OrderController {
      * @param session
      * @param goodsList 订单商品id列表
      */
-    @GetMapping("create")
-    public void addOrder(HttpSession session, @RequestParam("goodsList") Integer[] goodsList){
-        TbOrder tbOrder = new TbOrder();
-        tbOrder.setOrderid(null);
+    @PostMapping("create")
+    public void addOrder(HttpSession session,String goodsList){
+//        TbOrder tbOrder = new TbOrder();
+//        tbOrder.setOrderid(null);
 
-        //接受前端里的值并set
-        String username = session.getAttribute("name").toString();
-        Date orderDate = new Date();
-        Integer orderState = 0;
+//        //接受前端里的值并set
+//        String username = session.getAttribute("name").toString();
+//        Date orderDate = new Date();
+//        Integer orderState = 0;
 
-        tbOrder.setCustomername(username);
-        tbOrder.setOrderdate(orderDate);
-        tbOrder.setOrderstate(orderState);
-
-        //计算总价格
-        tbOrder.setTotalmoney(orderService.sumGoodsPrice(goodsList));
-
-        //set订单详情
-        for (int i = 0;i < goodsList.length; i++){
-            TbOrderdetailKey tbOrderdetailKey = new TbOrderdetailKey();
-        tbOrderdetailKey.setOrderid(tbOrder.getOrderid());
-        tbOrderdetailKey.setGoodsid(goodsList[i]);
-        orderService.addOrderDetail(tbOrderdetailKey);
-        }
-        orderService.addOrder(tbOrder);
+//        tbOrder.setCustomername(username);
+//        tbOrder.setOrderdate(orderDate);
+//        tbOrder.setOrderstate(orderState);
+//        //计算总价格
+//        tbOrder.setTotalmoney(orderService.sumGoodsPrice(goodsList));
+//
+//        //set订单详情
+//        for (int i = 0;i < goodsList.length; i++){
+//            TbOrderdetailKey tbOrderdetailKey = new TbOrderdetailKey();
+//        tbOrderdetailKey.setOrderid(tbOrder.getOrderid());
+//        tbOrderdetailKey.setGoodsid(goodsList[i]);
+//        orderService.addOrderDetail(tbOrderdetailKey);
+//        }
+//        orderService.addOrder(tbOrder);
     }
 
     @PostMapping("del")
