@@ -74,4 +74,11 @@ public class OrderController {
         modelAndView.setViewName("cart");
         return  modelAndView;
     }
+    @RequestMapping("/toPay")
+    public ModelAndView toPay(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("facePay");
+        return  modelAndView;
+    }
+
 }
