@@ -96,43 +96,6 @@
                 </div>
 <!--                主要内容-->
                 <div class="imfor" id="goodsCart">
-<!--                    <div class="check">-->
-<!--                        <div class="Each">-->
-<!--                            <span class="normal">-->
-<!--                                <img src="../static/images/cart/product_normal.png" alt=""/>-->
-<!--                            </span>-->
-<!--                            <input type="hidden" name="" value="">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="pudc">-->
-<!--                        <div class="pudc_information" id="pudcId3">-->
-<!--                            <img src="../static/images/cart/product_simg1.png" class="lf"/>-->
-<!--                            <input type="hidden" name="" value="">-->
-<!--                        <span class="des lf">-->
-<!--                            联想(Lenovo)YOGA5 PRO 标配版电脑(i5-7200u 8G 512G SSD FHD IPS)银-->
-<!--                              <input type="hidden" name="" value="">-->
-<!--                        </span>-->
-<!--                            <p class="col lf"><span>颜色：</span><span class="color_des">深空灰  <input type="hidden" name="" value=""></span></p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="pices">-->
-<!--                        <p class="pices_des">阿甲专享价</p>-->
-<!--                        <p class="pices_information"><b>￥</b><span>4888.00  <input type="hidden" name="" value=""></span></p>-->
-<!--                    </div>-->
-<!--                    <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" ><span class="add">&nbsp;+&nbsp;</span></div>-->
-<!--                    <div class="totle">-->
-<!--                        <span>￥</span>-->
-<!--                        <span class="totle_information">4888.00</span>-->
-<!--                    </div>-->
-<!--                    <div class="del">-->
-<!--                        &lt;!&ndash; <div>-->
-<!--                            <img src="img/true.png" alt=""/>-->
-<!--                            <span>已移入收藏夹</span>-->
-<!--                        </div>-->
-<!--                         <a href="javascript:;" class="del_yr">移入收藏夹</a>-->
-<!--                        &ndash;&gt;-->
-<!--                        <a href="javascript:;" class="del_d">删除</a>-->
-<!--                    </div>-->
                 </div>
 
             </div>
@@ -160,7 +123,7 @@
         <p class="none_title">购物车</p>
         <div class="none_top"></div>
         <div class="none_content">
-            <img src="../static/images/30.png" alt="" class="lf"/>
+<!--            <img src="../static/images/30.png" alt="" class="lf"/>-->
             <p class="lf">您的购物车竟然还是空哒( ⊙ o ⊙ )</p>
             <span class="lf">赶快去下单吧！</span>
             <a href="#" class="lf">去购物>></a>
@@ -251,7 +214,7 @@
     cart = JSON.parse(localStorage.getItem("cartList"));
     $("#go-buy").click(function(){
         $.ajax({
-            type: "GET",
+            type: "POST",
             data:{"goodsList":cart},
             url: "/order/create",
             success: function (data) {
@@ -271,6 +234,17 @@
             }
         })
     })
+
+
+    // <div class="check">
+    //     <div class="Each">
+    //     <span class="normal">
+    //     <img style="width: 120px" src="`+data.goodsimagename+`" alt=""/>
+    //     </span>
+    //     <input type="hidden" name="" value="">
+    //     </div>
+    //     </div>
+
     for (j=0;j<cart.length;j++){
         var cartid = cart[j];
         $.ajax({
@@ -278,14 +252,7 @@
             data:{},
             url: "/goods/"+cartid,
             success:function (data) {
-                var str =`                    <div class="check">
-                        <div class="Each">
-                            <span class="normal">
-                                <img style="width: 120px" src="`+data.goodsimagename+`" alt=""/>
-                            </span>
-                            <input type="hidden" name="" value="">
-                        </div>
-                    </div>
+                var str =`
                     <div class="pudc">
                         <div class="pudc_information" id="pudcId3">
 
@@ -307,12 +274,6 @@
                         <span class="totle_information">`+data.goodsunitprice+`</span>
                     </div>
                     <div class="del">
-                        <!-- <div>
-                            <img src="img/true.png" alt=""/>
-                            <span>已移入收藏夹</span>
-                        </div>
-                         <a href="javascript:;" class="del_yr">移入收藏夹</a>
-                        -->
                         <a href="javascript:;" class="del_d">删除</a>
                     </div>`;
                 $("#goodsCart").append(str);
