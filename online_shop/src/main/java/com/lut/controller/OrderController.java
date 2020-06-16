@@ -58,10 +58,15 @@ public class OrderController {
         orderService.delOrder(orderId);
     }
     @PostMapping("deal")
-    public void dealOrder(Integer orderId){
+    public void dealOrderById(@RequestParam("id") Integer orderId){
+        System.out.println(orderId);
         orderService.dealOrder(orderId);
     }
+    @PostMapping("list")
+    public List<TbOrder> listOrder(){
 
+        return  orderService.listOrderfordeal();
+    }
     @RequestMapping("/toPayPage")
     public ModelAndView toPayPage(){
         ModelAndView modelAndView = new ModelAndView();
@@ -80,5 +85,12 @@ public class OrderController {
         modelAndView.setViewName("facePay");
         return  modelAndView;
     }
+    @RequestMapping("/deal")
+    public ModelAndView dealOrder(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/order-list");
+        return  modelAndView;
+    }
+
 
 }
