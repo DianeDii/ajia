@@ -23,21 +23,21 @@
                         <div class="layui-card-body " id="table">
 
 <!--                                <tbody>-->
-<!--                                    <tr>-->
-<!--                                        <td>-->
-<!--                                            <input type="checkbox" name="" lay-skin="primary"></td>-->
-<!--                                        <td>2017009171822298053</td>-->
-<!--                                        <td>老王:18925139194</td>-->
-<!--                                        <td>7829.10</td>-->
-<!--                                        <td>未发货</td>-->
+<!--<tr>-->
+<!--    <td>-->
+<!--        <input type="checkbox" name="" lay-skin="primary"></td>-->
+<!--    <td>2017009171822298053</td>-->
+<!--    <td>老王:18925139194</td>-->
+<!--    <td>7829.10</td>-->
+<!--    <td>未发货</td>-->
 
-<!--                                        <td>2017-08-17 18:22</td>-->
-<!--                                        <td class="td-manage">-->
-<!--                                            <a title="处理" onclick="dealOrder()">-->
-<!--                                                <i class="layui-icon">&#xe63c;</i></a>-->
+<!--    <td>2017-08-17 18:22</td>-->
+<!--    <td class="td-manage">-->
+<!--        <a title="处理" onclick="dealOrder()">-->
+<!--            <i class="layui-icon">&#xe63c;</i></a>-->
 
-<!--                                        </td>-->
-<!--                                    </tr>-->
+<!--    </td>-->
+<!--</tr>-->
 
                                 </tbody>
                             </table>
@@ -55,31 +55,31 @@
             data:{},
             async: false,
             success:function (data) {
-                var str = "<table class='layui-table layui-form'>                                " +
-                    "<thead>                                    " +
-                    "<tr>                                        " +                     " +
-                    "<th>订单编号</th>                                        " +
-                    "<th>收货人</th>                                        " +
-                    "<th>总金额</th>                                        " +
-                    "<th>订单状态(0为未处理,该页面只显示未处理订单)</th>                                        " +
-                    "<th>下单时间</th>                                        " +
-                    "<th>操作</th></tr>                                " +
+                var str = "<table class='layui-table layui-form'> " +
+                    "<thead>" +
+                    "<tr>" +                    
+                    "<th>订单编号</th>    " +
+                    "<th>收货人</th>    " +
+                    "<th>总金额</th>    " +
+                    "<th>订单状态(0为未处理,该页面只显示未处理订单)</th>    " +
+                    "<th>下单时间</th>    " +
+                    "<th>操作</th></tr> " +
                     "</thead>";
                 $.each(data,function (index,element) {
                     str +="<tbody>" +
-                        "                                    <tr>" +
-                        "                                        <td>" +
-                        "                                            <input type='checkbox' name='' lay-skin='primary'></td>" +
-                        "                                        <td>"+element['orderid']+"</td>" +
-                        "                                        <td>"+element['customername']+"</td>" +
-                        "                                        <td>"+element['totalmoney']+"</td>" +
-                        "                                        <td>"+element['orderstate']+"</td>" +
-                        "                                        <td>"+element['orderdate']+"</td>" +
-                        "                                        <td class='td-manage'>" +
-                        "                                            <a title='处理' onclick='dealOrder("+element['orderid']+")'>" +
-                        "                                                <i class='layui-icon'>&#xe63c;</i></a>" +
-                        "                                        </td>" +
-                        "                                    </tr>";
+                        "<tr>" +
+                        "    <td>" +
+                        "        <input type='checkbox' name='' lay-skin='primary'></td>" +
+                        "    <td>"+element['orderid']+"</td>" +
+                        "    <td>"+element['customername']+"</td>" +
+                        "    <td>"+element['totalmoney']+"</td>" +
+                        "    <td>"+element['orderstate']+"</td>" +
+                        "    <td>"+element['orderdate']+"</td>" +
+                        "    <td class='td-manage'>" +
+                        "        <a title='处理' onclick='dealOrder("+element['orderid']+")'>" +
+                        "            <i class='layui-icon'>&#xe63c;</i></a>" +
+                        "    </td>" +
+                        "</tr>";
                 })
                 str += "</tbody></table>";
                 $("#table").append(str);
