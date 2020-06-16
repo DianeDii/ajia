@@ -75,10 +75,15 @@ public class GoodsController {
         goodsService.updateGoods(tbGoods);
     }
     @PostMapping("/search")
-    public List<TbGoods> search(HttpServletRequest request){
+    public List<TbGoods> search(String search){
         //获取前台搜索框输入的数据
-        String search = request.getParameter("input");
         return goodsService.showGoodsByField(search);
+    }
+    @RequestMapping("/toSearch")
+    public ModelAndView search(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("search");
+        return modelAndView;
     }
 
     @GetMapping("/{goodsId}")

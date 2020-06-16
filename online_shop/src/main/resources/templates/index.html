@@ -137,7 +137,7 @@
     </div>
 </div>
 <script src="../static/js/jquery-3.1.1.min.js"></script>
-<script src="../static/js/index.js"></script>
+<!--<script src="../static/js/index.js"></script>-->
 <script>
     //手风琴效果
     $(function () {
@@ -162,8 +162,19 @@
     });
     //搜索页面跳转
     $("#search").click(function(){
-    	window.location.href="search.html";
+    	var search = document.getElementById("input").value;
+    	localStorage.setItem("searchData",search);
+    	$.ajax({
+            type: "POST",
+            url: "/goods/search",
+            data:{"search":search},
+            success: function () {
+            },
+
+        })
+        window.location.href = "/goods/toSearch";
     })
+
 </script>
 <script>
 
@@ -235,9 +246,7 @@ function load_data() {
 
 
 </script>
-<script>
 
-</script>
 
 
 
