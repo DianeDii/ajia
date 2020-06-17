@@ -59,13 +59,18 @@ public class OrderController {
     }
     @PostMapping("deal")
     public void dealOrderById(@RequestParam("id") Integer orderId){
-        System.out.println(orderId);
         orderService.dealOrder(orderId);
     }
     @PostMapping("list")
     public List<TbOrder> listOrder(){
 
         return  orderService.listOrderfordeal();
+    }
+    @GetMapping("forUser")
+    public List<TbOrder>  listByUser(HttpSession session){
+          String userName = session.getAttribute("name").toString();
+          return orderService.listOrderByUser(userName);
+
     }
     @RequestMapping("/toPayPage")
     public ModelAndView toPayPage(){
@@ -89,6 +94,12 @@ public class OrderController {
     public ModelAndView dealOrder(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin/order-list");
+        return  modelAndView;
+    }
+    @RequestMapping("toOrderPage")
+    public ModelAndView toOrderForUser(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("myOrder");
         return  modelAndView;
     }
 

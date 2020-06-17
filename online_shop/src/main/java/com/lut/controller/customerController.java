@@ -1,6 +1,7 @@
 package com.lut.controller;
 
 import com.lut.model.TbCustomer;
+import com.lut.model.TbOrder;
 import com.lut.service.impl.CustomerServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,6 +20,7 @@ public class customerController {
 
     @Autowired
     CustomerServiceImpl customerService;
+
     @RequestMapping(value = "/login")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
@@ -86,7 +88,6 @@ public class customerController {
 
         return modelAndView;
     }
-
 
     @GetMapping("/myInfo")
     public ModelAndView showInfo(HttpSession session){

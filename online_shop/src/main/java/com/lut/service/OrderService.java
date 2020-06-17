@@ -11,20 +11,20 @@ import java.util.List;
 @Service
 public interface OrderService {
     //用户产生新订单（tb_order,tb_orderdetail）
-    public void addOrder(TbOrder tbOrder);
+      void addOrder(TbOrder tbOrder);
 
     //用户产生订单详情
-    public  void addOrderDetail(TbOrderdetailKey tbOrderdetailKey);
+      void addOrderDetail(TbOrderdetailKey tbOrderdetailKey);
 
     //查看所有订单（tb_order）
-    public List<TbOrder> listOrderInfo();
+     List<TbOrder> listOrderInfo();
 
     //查询一个订单内商品
-    public  List<TbGoods> listOrderGoods(Integer orderId);
+      List<TbGoods> listOrderGoods(Integer orderId);
 
 
     //管理员查看所有未处理订单
-    public List<TbOrder> listOrderfordeal();
+     List<TbOrder> listOrderfordeal();
 
     /**
      *     后台处理订单
@@ -34,11 +34,14 @@ public interface OrderService {
      *      传入id将 状态0 改1
      * @param orderId 订单id
      */
-    public void dealOrder(Integer orderId);
+     void dealOrder(Integer orderId);
 
     //用户删除历史订单
-    public void delOrder(Integer orderId);
+     void delOrder(Integer orderId);
 
     //计算订单商品总价格
-    public int sumGoodsPrice(Integer[] goodsIdList);
+     int sumGoodsPrice(Integer[] goodsIdList);
+
+    //查询用户所有历史订单
+    List<TbOrder> listOrderByUser(String userName);
 }

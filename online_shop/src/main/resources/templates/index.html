@@ -57,7 +57,7 @@
             <li style="display: none" class="ishidden"><a href="/user/myInfo">我的信息</a></li>
             <li style="display: none" class="ishidden"><a href="/address/">收货地址</a></li>
 <!--            订单未完成-->
-            <li style="display: none" class="ishidden"><a href="/user/order">我的订单</a></li>
+            <li style="display: none" class="ishidden"><a href="/order/toOrderPage">我的订单</a></li>
             <li style="display: none" class="ishidden"><a href="/order/toCartPage">购物车</a></li>
             <li style="display: none" class="ishidden"><a href="/user/login" onclick="loginout()">登出</a></li>
 <!--            <span id=value></span>-->
@@ -164,14 +164,7 @@
     $("#search").click(function(){
     	var search = document.getElementById("input").value;
     	localStorage.setItem("searchData",search);
-    	$.ajax({
-            type: "POST",
-            url: "/goods/search",
-            data:{"search":search},
-            success: function () {
-            },
 
-        })
         window.location.href = "/goods/toSearch";
     })
 

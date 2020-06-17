@@ -66,6 +66,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<TbOrder> listOrderByUser(String userName) {
+        return tbOrderMapper.showAllForUser(userName);
+    }
+
+    @Override
     public List<TbOrder> listOrderfordeal() {
         return tbOrderMapper.showAllfordeal();
     }

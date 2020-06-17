@@ -114,4 +114,5 @@ public interface TbOrderMapper {
     //用户删除订单（订单状态改变为2）
     @Select("update tb_order set orderState = '2' where orderID = #{orderId};")
     void delOrder(@Param("orderId") Integer orderId);
+
 }
