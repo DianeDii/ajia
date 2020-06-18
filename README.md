@@ -1,5 +1,7 @@
 ## 基于SpringBoot的简易网上商城。
 
+ - 主要为online_shop包实现
+
 ### 用途
 
 - Java课程设计
